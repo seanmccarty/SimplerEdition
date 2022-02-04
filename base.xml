@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<root version="1.0" release="1.0">
+	<announcement text="Simpler Edition v0.1-dev by mccartysr, 2022" font="emotefont" icon="Logo_Mccartysr"/>>
+	<!-- Attributes -->
+	<description>
+		<displayname>Simpler Edition</displayname>
+		<text>Simpler Edition</text>
+		<author>mccartysr</author>
+		<website>https://www.fantasygrounds.com</website>
+	</description>
+
+	<!-- Layers -->
+	<importruleset source="5E" />
+	<includefile source="xml/resources.xml"  />
+	<importinfo>
+		<acceptfrom ruleset="5E" />
+	</importinfo>
+	
+	<!-- Tabletop settings -->
+
+	<!-- Graphics -->
+	
+	<!-- Strings -->
+
+	<!-- Common -->
+
+	<!-- Desktop -->
+	
+	<!-- Utility -->
+	
+	<!-- Reference -->
+	
+	<!-- Combat tracker -->
+
+	<!-- Party sheet -->
+
+	<!-- High-level scripts -->
+</root>

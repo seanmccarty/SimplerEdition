@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+	<template name="number_abilityscore">
+		<basicnumber>
+			<default>0</default>
+			<script file="campaign/scripts/number_abilityscore.lua" />
+		</basicnumber>
+	</template>
+</root>

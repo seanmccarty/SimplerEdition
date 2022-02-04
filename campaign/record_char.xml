@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="charsheet" merge="join">
+		<script file="campaign/scripts/char.lua" />
+		<sheetdata>			
+			<label_charframetop name="nametitle">
+				<anchored to="contentanchor" height="20">
+					<top anchor="bottom" offset="7" />
+					<left offset="65" />
+					<right offset="-85" />
+				</anchored>
+				<static textres="char_label_name" />
+			</label_charframetop>
+			
+			<label_charframetop name="inspirationtitle" merge="delete"/>
+			<buttongroup_counter name="inspiration" merge="delete"/>
+
+			<tabs_charsheet name="tabs" merge="resetandadd">
+				<tab>
+					<icon>tab_main</icon>
+					<subwindow>main</subwindow>
+				</tab>
+				<tab>
+					<icon>tab_abilities</icon>
+					<subwindow>abilities</subwindow>
+				</tab>
+				<tab>
+					<icon>tab_inventory</icon>
+					<subwindow>inventory</subwindow>
+				</tab>
+				<tab>
+					<icon>tab_notes</icon>
+					<subwindow>notes</subwindow>
+				</tab>
+				<tab>
+					<icon>tab_actions</icon>
+					<subwindow>actions</subwindow>
+				</tab>
+				<activate>1</activate>
+			</tabs_charsheet>
+		</sheetdata>
+	</windowclass>
+</root>

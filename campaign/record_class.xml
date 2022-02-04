@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+	<windowclass name="ref_class_stats" merge="join">
+		<margins control="0,0,0,7" />
+		<script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				hitperlevel.update(bReadOnly);
+				AC.update(bReadOnly);
+				profIncrease.update(bReadOnly);
+				profarmor.update(bReadOnly);
+				profsavingthrows.update(bReadOnly);
+				profskills.update(bReadOnly);
+				proftools.update(bReadOnly);
+				profweapons.update(bReadOnly);
+				multiprofarmor.update(bReadOnly);
+				multiprofskills.update(bReadOnly);
+				multiproftools.update(bReadOnly);
+				multiprofweapons.update(bReadOnly);
+				features.update(bReadOnly);
+				specializations.update(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<label_column name="hitdice_label" merge="delete"/>
+			<string_columnh name="hitdice" merge="delete"/>
+
+			<label_column name="points_label" insertbefore="proficiencies_header">
+				<static text="HP Per Level" />
+			</label_column>
+			<string_columnh name="hitperlevel" source="hp.hitperlevel" insertbefore="proficiencies_header"/>
+			<label_column name="AC_label" insertbefore="proficiencies_header">
+				<static text="AC" />
+			</label_column>
+			<string_columnh name="AC" source="AC" insertbefore="proficiencies_header"/>
+			<label_column name="prof_label" insertbefore="proficiencies_header">
+				<static text="Prof Inc" />
+			</label_column>
+			<string_columnh name="profIncrease" source="profIncrease" insertbefore="proficiencies_header"/>
+		</sheetdata>
+	</windowclass>
+</root>

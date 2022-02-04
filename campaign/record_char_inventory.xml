@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+
+		
+	<windowclass name="charsheet_inventory_contents" merge="join">
+		<script file="campaign/scripts/char_inventory.lua" />
+		<sheetdata>
+			<label name="weight_label" merge="delete"/>
+			<genericcontrol name="attuned_header" merge="delete"/>
+			
+			<button_details name="button_invmeta" merge="delete"/>
+			<genericcontrol name="attunecalcicon" merge="delete"/>
+			<string_charinv_attunecalc name="attunecalc" merge="delete"/>
+
+			<label_charframetop name="encumbrancetitle" merge="delete"/>
+			<simplenumber name="encumbranceload"  merge="delete"/>
+			<label_fieldtop name="encumbranceload_label" merge="delete"/>
+
+			<genericcontrol name="encumbranceanchor" merge="delete"/>
+			<number_linked name="encumbrancebase" merge="delete"/>
+			<label_fieldtop name="encumbrancebase_label" merge="delete"/>
+			<number_linked name="encumbranceheavy" merge="delete"/>
+			<label_fieldtop name="encumbranceheavy_label" merge="delete"/>
+			<number_linked name="encumbrancemax"  merge="delete"/>
+			<label_fieldtop name="encumbrancemax_label" merge="delete"/>
+			<number_linked name="encumbrancedrag"  merge="delete"/>
+			<label_fieldtop name="encumbrancedrag_label" merge="delete"/>
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="char_invitem" merge="join">
+		<script file="campaign/scripts/char_invitem.lua"/>
+		<sheetdata>
+			<button_idelete name="idelete" merge="delete" />
+			<button_idelete name="idelete" insertbefore="carried">
+				<anchored>
+					<top offset="2" />
+					<right parent="rightanchor" anchor="left" offset="-5" />
+				</anchored>
+			</button_idelete>
+
+			<number_charinv name="weight" merge="delete"/>
+			<button_checkbox name="attune" merge="delete"/>
+			<simplestringc name="attune_na" merge="delete"/>
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="charsheet_invmeta" merge="delete"/>
+</root>

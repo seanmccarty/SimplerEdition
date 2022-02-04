@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<!-- Update onSourceUpdate always add proficiency -->
+	<template name="number_charabilitysave">
+		<number_chartotal>
+			<anchored to="savestitle" width="40" height="30">
+				<top anchor="bottom" relation="relative" offset="18" />
+				<left anchor="center" offset="-20" />
+			</anchored>
+			<rollable />
+			<displaysign />
+			<modifiersize>mini</modifiersize>
+			<script>
+				function onInit()
+					addSourceWithOp("abilities." .. target[1] .. ".bonus", "+");
+					addSource("abilities." .. target[1] .. ".saveprof");
+					addSource("profbonus");
+					super.onInit();
+				end
+
+				function onSourceUpdate()
+					local nValue = calculateSources();
+
+					local node = window.getDatabaseNode();
+					nValue = nValue + DB.getValue(node, "profbonus", 0);
+					
+					setValue(nValue);
+				end
+				
+				function action(draginfo)
+					local rActor = ActorManager.resolveActor(window.getDatabaseNode());
+					ActionSave.performRoll(draginfo, rActor, self.target[1]);
+					return true;
+				end
+				
+				function onDragStart(button, x, y, draginfo)
+					return action(draginfo);
+				end
+					
+				function onDoubleClick(x,y)
+					return action();
+				end
+			</script>
+		</number_chartotal>
+	</template>
+
+	<!-- override the save prof to always show proficency -->
+	<template name="button_saveprof">
+		<button_prof>
+			<anchored position="insidebottomright" offset="-6,-2" width="12" height="12" />
+			<state icon="button_prof_down" tooltipres="char_tooltip_prof_on" />
+			<disabled/>
+		</button_prof>
+	</template>
+</root>

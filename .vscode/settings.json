@@ -1,0 +1,23 @@
+{
+	"Lua.diagnostics.globals": [
+		"Comm",
+		"ActionsManager2",
+		"ActionsManager",
+		"OptionsManager",
+		"EffectManager",
+		"DB",
+		"CombatManager",
+		"CombatManager2",
+		"ActorManager5E",
+		"EffectManager5E",
+		"ActionSave",
+		"ActionRecovery",
+		"ActionInit",
+		"ActionDamage",
+		"ActorManager",
+		"StringManager",
+		"DataCommon",
+		"Interface",
+		"CharManager"
+	]
+}

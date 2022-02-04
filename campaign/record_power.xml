@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+	<windowclass name="power_groupdetail" merge="join">
+		<sheetdata>
+			<button_prof name="atkprof" merge="delete"/>
+			<label name="label_atkplus2" merge="delete"/>
+			<basicnumber name="atkmod">
+				<anchored to="label_atkplus" position="righthigh" offset="5,0" width="25" height="20" />
+			</basicnumber>
+			<button_prof name="saveprof" merge="delete"/>
+			<label name="label_saveplus2" merge="delete"/>
+			<basicnumber name="savemod">
+				<anchored to="label_saveplus" position="righthigh" offset="5,0" width="25" height="20" />
+			</basicnumber>
+		</sheetdata>
+	</windowclass>
+</root>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<root>
+	<string name="SE_title_prof">PROF</string>
+	<string name="SE_modifier_prof">[PROF]</string>
+	<string name="SE_char_label_background">BACKGROUND</string>
+	<string name="SE_char_label_specialSkills">SPECIAL SKILLS</string>
+</root>

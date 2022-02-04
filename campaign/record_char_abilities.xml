@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="charsheet_abilities" merge="join">
+		<sheetdata>
+			<button_iedit name="actions_iedit">
+				<anchored position="insidebottomright" offset="10,10" />
+				<tooltip textres="char_abilities_tooltip_edit" />
+				<script>
+					function onValueChanged()
+						local bEditMode = (getValue() == 1);
+						
+						--window.contents.subwindow.feats.update();
+						window.contents.subwindow.features.update();
+						window.contents.subwindow.traits.update();
+						--window.contents.subwindow.proficiencies.update();
+						window.contents.subwindow.languages.update();
+					end
+				</script>
+			</button_iedit>
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="charsheet_abilities_contents" merge="join">
+		<script file="campaign/scripts/char_abilities.lua" />
+		<sheetdata>
+			<label_charframetop name="featstitle">
+				<invisible/>
+			</label_charframetop>
+			<list_abilities name="feats" merge="delete"/>
+			<button_iadd name="feats_iadd" merge="delete"/>
+
+			<label_charframetop name="proficienciestitle" merge="delete"/>
+			<button_iadd name="proficiencies_iadd" merge="delete"/>
+			<list_abilities name="proficiencies" merge="delete"/>
+
+			<label_charframetop name="languagestitle">
+				<anchored to="traitstitle" height="20">
+					<top anchor="bottom" relation="relative" offset="7" />
+					<left />
+					<right />
+				</anchored>
+			</label_charframetop>
+		</sheetdata>
+	</windowclass>
+</root>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="char_weapon" merge="join">
+		<sheetdata>
+			<button_weaponprof name="prof" merge="delete"/>
+			<state_charweaponhand name="handling" merge="delete"/>
+		</sheetdata>
+	</windowclass>
+
+	<!-- need to include whole class because of unnamed controls -->
+	<windowclass name="char_weapon_editor_main">
+		<script>
+			function onDrop(x, y, draginfo)
+				local sDragType = draginfo.getType();
+				
+				if sDragType == "dice" then
+					local w = list.addEntry(true);
+					for _, vDie in ipairs(draginfo.getDieList()) do
+						w.dice.addDie(vDie.type);
+					end
+					return true;
+				elseif sDragType == "number" then
+					local w = list.addEntry(true);
+					w.bonus.setValue(draginfo.getNumberData());
+					return true;
+				end
+			end
+		</script>
+		<sheetdata>
+			<anchor_column name="columnanchor" />
+			
+			<label_column name="name_label">
+				<static textres="weapon_label_name" />
+			</label_column>
+			<string_column name="name" />
+			
+			<label_column name="properties_label">
+				<static textres="weapon_label_properties" />
+			</label_column>
+			<string_column name="properties" />
+			
+			<header_column name="header_attack">
+				<static textres="weapon_header_attack" />
+				<center />
+			</header_column>
+			
+			<cycler_abilitybase name="attackstat">
+				<anchored width="40" height="20">
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="20" />
+					<left offset="5" />
+				</anchored>
+			</cycler_abilitybase>
+			<label_fieldtop>
+				<anchored to="attackstat" />
+				<static textres="weapon_label_atkstat" />
+			</label_fieldtop>
+			<label name="label_atkplus">
+				<anchored to="attackstat" position="righthigh" offset="5,0" width="10" />
+				<static>+</static>
+				<center />
+			</label>
+			<basicnumber name="attackbonus">
+				<anchored to="label_atkplus" position="righthigh" offset="5,0" width="35" height="20" />
+				<hideonvalue>0</hideonvalue>
+			</basicnumber>
+			<label_fieldtop>
+				<anchored to="attackbonus" />
+				<static textres="weapon_label_atkbonus" />
+			</label_fieldtop>
+			<!-- <label name="label_atkplus2">
+				<anchored to="attackbonus" position="righthigh" offset="5,0" width="10" />
+				<static>+</static>
+				<center />
+			</label> -->
+			<!-- <button_prof name="prof">
+				<anchored to="label_atkplus2" position="righthigh" offset="0,0" height="20" width="20" />
+				<default>1</default>
+			</button_prof>
+			<label_fieldtop>
+				<anchored to="prof" />
+				<static textres="weapon_label_atkprof" />
+			</label_fieldtop> -->
+
+			<header_column name="header_damage">
+				<static textres="weapon_header_damage" />
+				<center />
+			</header_column>
+			<button_iedit name="list_iedit">
+				<anchored to="header_damage" position="insidetopright" offset="-5,0" />
+				<target>list</target>
+			</button_iedit>
+			<button_iadd name="list_iadd">
+				<anchored to="list_iedit" position="lefthigh" offset="5,0" />
+				<target>list</target>
+			</button_iadd>
+
+			<list_editor name="list">
+				<datasource>.damagelist</datasource>
+				<class>char_weapon_damage_entry</class>
+				<script>
+					function addEntry(bFocus)
+						local n = getWindowCount();
+						
+						local w = createWindow();
+						if w then
+							if n == 0 then
+								w.stat.setStringValue("base");
+							end
+						
+							if bFocus then
+								w.type.setFocus();
+							end
+						end
+						
+						return w;
+					end
+				</script>
+			</list_editor>
+			
+			<label_fieldtop>
+				<anchored to="list" position="aboveleft" offset="5,1" width="60" />
+				<static textres="weapon_label_dmgdice" />
+			</label_fieldtop>
+			<label_fieldtop>
+				<anchored to="list" position="aboveleft" offset="82,1" width="67" />
+				<static textres="weapon_label_dmgstat" />
+			</label_fieldtop>
+			<label_fieldtop>
+				<anchored to="list" position="aboveleft" offset="166,1" width="35" />
+				<static textres="weapon_label_dmgbonus" />
+			</label_fieldtop>
+			<label_fieldtop>
+				<anchored to="list" position="aboveright" offset="5,1">
+					<left offset="211" />
+				</anchored>
+				<static textres="weapon_label_dmgtype" />
+			</label_fieldtop>
+		</sheetdata>
+	</windowclass>
+</root>
