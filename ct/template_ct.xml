@@ -317,7 +317,7 @@
 	
 	<template name="base_clientct_health">
 		<genericcontrol name="healthbase">
-			<anchored to="rightanchor" width="110" height="20">
+			<anchored to="rightanchor" width="70" height="20">
 				<top />
 				<right anchor="left" relation="relative" offset="-10" />
 			</anchored>
@@ -363,7 +363,7 @@
 	</template>
 	<template name="number_clientct_hp">
 		<number_ct_static name="hptotal">
-			<anchored to="hptemp" width="30" height="20">
+			<anchored to="wounds" width="30" height="20">
 				<top />
 				<right anchor="left" offset="-10" />
 			</anchored>

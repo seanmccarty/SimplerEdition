@@ -44,22 +44,22 @@
 				<center />
 			</label_ct>
 			<label_ct name="label_init">
-				<anchored to="header_labels" position="insidetopright" offset="140,3" width="30" />
+				<anchored to="header_labels" position="insidetopright" offset="95,3" width="30" />
 				<static textres="init" />
 				<center />
 			</label_ct>
 			<label_ct name="label_hp">
-				<anchored to="header_labels" position="insidetopright" offset="95,3" width="30" />
+				<anchored to="header_labels" position="insidetopright" offset="55,3" width="30" />
 				<static textres="hp" />
 				<tooltip textres="hitpoints" />
 				<center />
 			</label_ct>
-			<label_ct name="label_temp">
+			<!-- <label_ct name="label_temp">
 				<anchored to="header_labels" position="insidetopright" offset="55,3" width="30" />
 				<static textres="ct_label_hptemp" />
 				<tooltip textres="ct_tooltip_hptemp" />
 				<center />
-			</label_ct>
+			</label_ct> -->
 			<label_ct name="label_wounds">
 				<anchored to="header_labels" position="insidetopright" offset="15,3" width="30" />
 				<static textres="ct_label_wounds" />
@@ -218,7 +218,7 @@
 				</anchored>
 				<min value="0" />
 				<hideonvalue value="0" />
-				<tabtarget prev="hptemp" next="strength" />
+				<tabtarget next="strength" />
 				<script>
 					function handleDrop(draginfo)
 						if draginfo.getType() == "number" then
@@ -233,7 +233,7 @@
 					end
 				</script>
 			</number_ct_crosslink>
-			<number_ct_crosslink name="hptemp">
+			<!-- <number_ct_crosslink name="hptemp">
 				<anchored to="rightanchor" width="30" height="20">
 					<top />
 					<right anchor="left" relation="relative" offset="-10" />
@@ -254,13 +254,13 @@
 						window.onHealthChanged();
 					end
 				</script>
-			</number_ct_crosslink>
+			</number_ct_crosslink> -->
 			<number_ct_crosslink name="hptotal">
 				<anchored to="rightanchor" width="30" height="20">
 					<top />
 					<right anchor="left" relation="relative" offset="-10" />
 				</anchored>
-				<tabtarget prev="initresult" next="hptemp" />
+				<tabtarget prev="initresult" />
 				<script>
 					function update()
 						window.onHealthChanged();

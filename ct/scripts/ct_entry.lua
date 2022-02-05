@@ -168,7 +168,7 @@ function linkPCFields()
 		senses.setLink(nodeChar.createChild("senses", "string"), true);
 
 		hptotal.setLink(nodeChar.createChild("hp.total", "number"));
-		hptemp.setLink(nodeChar.createChild("hp.temporary", "number"));
+		-- hptemp.setLink(nodeChar.createChild("hp.temporary", "number"));
 		wounds.setLink(nodeChar.createChild("hp.wounds", "number"));
 		deathsavesuccess.setLink(nodeChar.createChild("hp.deathsavesuccess", "number"));
 		deathsavefail.setLink(nodeChar.createChild("hp.deathsavefail", "number"));
