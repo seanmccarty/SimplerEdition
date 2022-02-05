@@ -16,45 +16,49 @@
 	<script name="SECombatManager" file="scripts/manager_combat2.lua"/>
 	<script name="SEActorManager" file="scripts/manager_actor_5E.lua"/>
 
-		<!-- Campaign Records -->
-		<!-- <includefile source="campaign/template_campaign.xml" /> -->
-		<includefile source="campaign/template_char.xml" />
-		<includefile source="campaign/template_se.xml" />
-		<!-- <includefile source="campaign/template_power.xml" /> -->
-	
-		<!-- <includefile source="campaign/campaign_chars.xml" /> -->
-		<includefile source="campaign/record_char.xml" />
-		<includefile source="campaign/record_char_main.xml" />
-		<!-- <includefile source="campaign/record_char_skills.xml" /> -->
-		<includefile source="campaign/record_char_abilities.xml" />
-		<includefile source="campaign/record_char_inventory.xml" />
-		<includefile source="campaign/record_char_notes.xml" />
-		<!-- <includefile source="campaign/record_char_logs.xml" /> -->
-		<!-- <includefile source="campaign/record_char_actions.xml" /> -->
-		<includefile source="campaign/record_char_weapon.xml" />
-		<!-- <includefile source="campaign/record_ability.xml" /> -->
-		<!-- <includefile source="campaign/record_adventure.xml" /> -->
-		<script name="SECharManager" file="campaign/scripts/manager_char.lua" />
-		<script name="SECharArmorManager" file="campaign/scripts/manager_char_armor.lua" />
-		<script name="SECharWeaponManager" file="campaign/scripts/manager_char_weapon.lua" />
-		<!-- <script name="CharAttunementManager" file="campaign/scripts/manager_char_attunement.lua" /> -->
-	
-		<!-- <includefile source="campaign/record_image.xml" />
-		<includefile source="campaign/record_npc.xml" />
-		<includefile source="campaign/record_encounter.xml" />
-		<includefile source="campaign/record_item.xml" />
-		<includefile source="campaign/record_itemtemplate.xml" />
-		<includefile source="campaign/record_quest.xml" />
-	
-		<includefile source="campaign/record_background.xml" /> -->
-		<includefile source="campaign/record_class.xml" />
-		<!-- <includefile source="campaign/record_feat.xml" /> -->
-		<includefile source="campaign/record_power.xml" />
-		<!-- <includefile source="campaign/record_power_roll.xml" /> -->
-		<!-- <includefile source="campaign/record_race.xml" /> -->
-		<!-- <includefile source="campaign/record_skill.xml" /> --> -->
-			<!-- Combat tracker -->
+	<!-- Campaign Records -->
+	<!-- <includefile source="campaign/template_campaign.xml" /> -->
+	<includefile source="campaign/template_char.xml" />
+	<includefile source="campaign/template_se.xml" />
+	<!-- <includefile source="campaign/template_power.xml" /> -->
+
+	<!-- <includefile source="campaign/campaign_chars.xml" /> -->
+	<includefile source="campaign/record_char.xml" />
+	<includefile source="campaign/record_char_main.xml" />
+	<!-- <includefile source="campaign/record_char_skills.xml" /> -->
+	<includefile source="campaign/record_char_abilities.xml" />
+	<includefile source="campaign/record_char_inventory.xml" />
+	<includefile source="campaign/record_char_notes.xml" />
+	<!-- <includefile source="campaign/record_char_logs.xml" /> -->
+	<!-- <includefile source="campaign/record_char_actions.xml" /> -->
+	<includefile source="campaign/record_char_weapon.xml" />
+	<!-- <includefile source="campaign/record_ability.xml" /> -->
+	<!-- <includefile source="campaign/record_adventure.xml" /> -->
+	<script name="SECharManager" file="campaign/scripts/manager_char.lua" />
+	<script name="SECharArmorManager" file="campaign/scripts/manager_char_armor.lua" />
+	<script name="SECharWeaponManager" file="campaign/scripts/manager_char_weapon.lua" />
+	<!-- <script name="CharAttunementManager" file="campaign/scripts/manager_char_attunement.lua" /> -->
+
+	<!-- <includefile source="campaign/record_image.xml" />
+	<includefile source="campaign/record_npc.xml" />
+	<includefile source="campaign/record_encounter.xml" />
+	<includefile source="campaign/record_item.xml" />
+	<includefile source="campaign/record_itemtemplate.xml" />
+	<includefile source="campaign/record_quest.xml" />
+
+	<includefile source="campaign/record_background.xml" /> -->
+	<includefile source="campaign/record_class.xml" />
+	<!-- <includefile source="campaign/record_feat.xml" /> -->
+	<includefile source="campaign/record_power.xml" />
+	<!-- <includefile source="campaign/record_power_roll.xml" /> -->
+	<!-- <includefile source="campaign/record_race.xml" /> -->
+	<!-- <includefile source="campaign/record_skill.xml" /> --> -->
+
+	<!-- Combat tracker -->
 	<includefile source="ct/template_ct.xml" />
 	<includefile source="ct/ct_host.xml" />
 	<includefile source="ct/ct_client.xml" />
+
+	<!-- Party Sheet -->
+	<includefile source="ps/ps_main.xml"/>
 </root>
