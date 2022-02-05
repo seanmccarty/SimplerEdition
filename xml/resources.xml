@@ -53,4 +53,8 @@
 		<!-- <includefile source="campaign/record_power_roll.xml" /> -->
 		<!-- <includefile source="campaign/record_race.xml" /> -->
 		<!-- <includefile source="campaign/record_skill.xml" /> --> -->
+			<!-- Combat tracker -->
+	<includefile source="ct/template_ct.xml" />
+	<includefile source="ct/ct_host.xml" />
+	<includefile source="ct/ct_client.xml" />
 </root>
