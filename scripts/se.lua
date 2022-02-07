@@ -59,8 +59,7 @@ end
 function getInitRoll(rActor, bSecretRoll)
 	local rRoll = {};
 	rRoll.sType = "init";
-	--TODO: Add option for d10 or d20
-	rRoll.aDice = { "d20" };
+	rRoll.aDice = { "d10" };
 	rRoll.nMod = 0;
 	
 	rRoll.sDesc = "[INIT]";
@@ -112,7 +111,7 @@ function getSaveRoll(rActor, sSave)
 	
 	rRoll.nMod = nMod + nQBValue;
 	
-	rRoll.sDesc = "[CHECK]".. Interface.getString("SE_modifier_prof") .. " " .. StringManager.capitalize(sSave);
+	rRoll.sDesc = "[CHECK] ".. Interface.getString("SE_modifier_prof") .. " " .. StringManager.capitalize(sSave);
 	if sAddText and sAddText ~= "" then
 		rRoll.sDesc = rRoll.sDesc .. " " .. sAddText;
 	end
