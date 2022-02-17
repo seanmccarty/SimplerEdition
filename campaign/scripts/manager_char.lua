@@ -202,6 +202,8 @@ function addClassProficiencyDB(nodeChar, sClass, sRecord)
 		local nPicks = CharManager.convertSingleNumberTextToNumber(sPicks);
 		
 		if nPicks == 0 then
+			sText = sText:gsub("and ", "");
+			sText = sText:gsub("or ", "");
 			for sSkill in sText:gmatch("(%a[%a%s]+)%,?") do
 				local sTrim = StringManager.trim(sSkill);
 				table.insert(aSkills, sTrim);
