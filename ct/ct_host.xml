@@ -536,7 +536,6 @@
 					<right />
 				</anchored>
 				<multilinespacing>20</multilinespacing>
-				<lineoffset default="on">1</lineoffset>
 				<nohighlight />
 				<actorpath>....</actorpath>
 				<script file="ct/scripts/ct_power.lua" />

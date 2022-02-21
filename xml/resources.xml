@@ -34,9 +34,9 @@
 	<includefile source="campaign/record_char_weapon.xml" />
 	<!-- <includefile source="campaign/record_ability.xml" /> -->
 	<!-- <includefile source="campaign/record_adventure.xml" /> -->
-	<script name="SECharManager" file="campaign/scripts/manager_char.lua" />
-	<script name="SECharArmorManager" file="campaign/scripts/manager_char_armor.lua" />
-	<script name="SECharWeaponManager" file="campaign/scripts/manager_char_weapon.lua" />
+	<script name="SECharManager" file="scripts/manager_char.lua" />
+	<script name="SECharArmorManager" file="scripts/manager_char_armor.lua" />
+	<script name="SECharWeaponManager" file="scripts/manager_char_weapon.lua" />
 	<!-- <script name="CharAttunementManager" file="campaign/scripts/manager_char_attunement.lua" /> -->
 
 	<!-- <includefile source="campaign/record_image.xml" />

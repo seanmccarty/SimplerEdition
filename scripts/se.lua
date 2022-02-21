@@ -7,6 +7,7 @@ function onInit()
 	ActionSave.performConcentrationRoll = performConcentrationRoll;
 	ActionSave.getRoll = getSaveRoll;
 	ActionsManager.registerResultHandler("skill", onSkillRoll);
+	CharEncumbranceManager.addStandardCalc();
 end
 
 function onCheckRoll(rSource, rTarget, rRoll)

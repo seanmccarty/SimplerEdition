@@ -28,23 +28,11 @@ function addClassRef(nodeChar, sClass, sRecord, bWizard)
 
 	-- Check to see if the character already has this class; or create a new class entry
 	local nodeClass = nil;
-	local sRecordSansModule = StringManager.split(sRecord, "@")[1];
-	local aCharClassNodes = nodeList.getChildren();
-	for _,v in pairs(aCharClassNodes) do
-		local _,sExistingClassPath = DB.getValue(v, "shortcut", "", "");
-		local sExistingClassPathSansModule = StringManager.split(sExistingClassPath, "@")[1];
-		if sExistingClassPathSansModule == sRecordSansModule then
+	for _,v in pairs(nodeList.getChildren()) do
+		local sExistingClassName = StringManager.trim(DB.getValue(v, "name", "")):lower();
+		if (sExistingClassName == sClassNameLower) and (sExistingClassName ~= "") then
 			nodeClass = v;
 			break;
-		end
-	end
-	if not nodeClass then
-		for _,v in pairs(aCharClassNodes) do
-			local sExistingClassName = StringManager.trim(DB.getValue(v, "name", "")):lower();
-			if (sExistingClassName == sClassNameLower) and (sExistingClassName ~= "") then
-				nodeClass = v;
-				break;
-			end
 		end
 	end
 	local bExistingClass = false;
