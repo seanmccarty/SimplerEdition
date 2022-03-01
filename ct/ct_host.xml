@@ -420,6 +420,14 @@
 				<target>actions</target>
 			</button_ct_actions_emptyadd>
 
+			<list_ct_actions name="bonusactions">
+				<datasource>.bonusactions</datasource>
+			</list_ct_actions>
+			<label_ct_actions name="bonusactions_label">
+				<anchored to="bonusactions" />
+				<static textres="ct_label_bonusactions" />
+			</label_ct_actions>
+
 			<list_ct_actions name="reactions">
 				<datasource>.reactions</datasource>
 			</list_ct_actions>

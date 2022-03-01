@@ -278,6 +278,14 @@ function setActiveVisible()
 		actions_emptyadd.setVisible(false);
 	end
 	
+	if bNPC and bonusactions.getWindowCount() > 0 then
+		bonusactions.setVisible(v);
+		bonusactions_label.setVisible(v);
+	else
+		bonusactions.setVisible(false);
+		bonusactions_label.setVisible(false);
+	end
+	
 	if bNPC and reactions.getWindowCount() > 0 then
 		reactions.setVisible(v);
 		reactions_label.setVisible(v);
