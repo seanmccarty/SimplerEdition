@@ -118,7 +118,7 @@ function buildDamageAction(nodeChar, nodeWeapon)
 	rAction.range = CharWeaponManager.getRange(nodeChar, nodeWeapon);
 
 	-- Check for reroll property
-	local nPropReroll = getPropertyNumber(nodeWeapon, WEAPON_PROP_REROLL);
+	local nPropReroll = CharWeaponManager.getPropertyNumber(nodeWeapon, WEAPON_PROP_REROLL);
 	if nPropReroll and (nPropReroll > 0) then
 		rAction.nReroll = nPropReroll;
 	end
