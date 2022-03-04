@@ -10,6 +10,7 @@
 				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
 				hitperlevel.update(bReadOnly);
 				AC.update(bReadOnly);
+				initialSpellSlots.update(bReadOnly);
 				profIncrease.update(bReadOnly);
 				profarmor.update(bReadOnly);
 				profsavingthrows.update(bReadOnly);
@@ -40,6 +41,10 @@
 				<static text="Prof Inc" />
 			</label_column>
 			<string_columnh name="profIncrease" source="profIncrease" insertbefore="proficiencies_header"/>
+			<label_column name="spellslots_label" insertbefore="proficiencies_header">
+				<static text="Init Spell Slots" />
+			</label_column>
+			<string_columnh name="initialSpellSlots" source="initialSpellSlots" insertbefore="proficiencies_header"/>
 		</sheetdata>
 	</windowclass>
 </root>

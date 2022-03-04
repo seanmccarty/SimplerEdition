@@ -14,4 +14,67 @@
 			</basicnumber>
 		</sheetdata>
 	</windowclass>
+
+	<windowclass name="power_slots_cast" merge="join">
+		<script file="campaign/scripts/power_slots_cast.lua" />
+	</windowclass>
+
+	<!-- overwrites power_slots_prep to only have one spell slot -->
+	<windowclass name="power_slots_prep">
+		<script>
+			function onInit()
+				onModeChanged();
+			end
+			
+			function onModeChanged()
+				local nodeChar = getDatabaseNode();
+				local sMode = DB.getValue(nodeChar, "powermode", "");
+				if sMode == "preparation" then
+					parentcontrol.setVisible(true);
+				else
+					parentcontrol.setVisible(false);
+				end
+			end
+		</script>
+		<sheetdata>
+			<anchor_column name="columnanchor" />
+			
+			<label_charframetop name="slotstitle">
+				<anchored height="20">
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="15" />
+					<left offset="15" />
+					<right offset="-10" />
+				</anchored>
+				<icons>char_powers</icons>
+				<static textres="power_label_spellslots" />
+			</label_charframetop>
+
+			<label name="spellslots_label">
+				<anchored>
+					<top parent="columnanchor" anchor="bottom" relation="current" offset="17" />
+					<left offset="10" />
+					<right anchor="center" offset="-120" />
+				</anchored>
+				<static textres="power_label_spellcastingslots" />
+			</label>
+			<genericcontrol name="anchor_spellslots">
+				<anchored width="0" height="20">
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="17" />
+					<left anchor="center" offset="-130" />
+				</anchored>
+				<disabled />
+			</genericcontrol>
+
+			<number_spellslots name="spellslots1" source="powermeta.spellslots1.max" />
+
+			<genericcontrol name="spacer">
+				<anchored height="0">
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="3" />
+					<left />
+					<right />
+				</anchored>
+				<disabled />
+			</genericcontrol>
+		</sheetdata>
+	</windowclass>
 </root>

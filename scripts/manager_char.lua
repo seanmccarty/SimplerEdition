@@ -77,8 +77,9 @@ function addClassRef(nodeChar, sClass, sRecord, bWizard)
 	CharManager.outputUserMessage("char_abilities_message_hpaddmax", DB.getValue(nodeSource, "name", ""), DB.getValue(nodeChar, "name", ""), nPerLevelHP);
 	DB.setValue(nodeChar, "hp.total", "number", nHP);
 
-	--SE Armor Class
+	--SE Armor Class (transform from total AC to modifier to base of 10)
 	local nACmod = tonumber(DB.getValue(nodeSource, "AC", "0"));
+	nACmod = nACmod - 10;
 	DB.setValue(nodeChar, "defenses.ac.armor", "number", nACmod);
 	DB.setValue(nodeChar, "defenses.ac.dexbonus", "string", "no");
 
@@ -127,6 +128,14 @@ function addClassRef(nodeChar, sClass, sRecord, bWizard)
 	else
 		return nodeClass;
 	end
+	--SE set spell slots
+	local newSpellSlot = CharManager.calcSpellcastingLevel(nodeChar);
+	local newPactSlot = CharManager.calcPactMagicLevel(nodeChar);
+	local totalSlots = newSpellSlot + newPactSlot + DB.getValue(nodeSource, "initialSpellSlots", 1) - 1
+	DB.setValue(nodeChar, "powermeta.spellslots1.max", "number", totalSlots);
+	DB.setValue(nodeChar, "powermeta.pactmagicslots1.max", "number", 0);
+	
+	
 end
 
 function addClassProficiencyDB(nodeChar, sClass, sRecord)
