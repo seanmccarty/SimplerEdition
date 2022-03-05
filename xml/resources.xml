@@ -17,6 +17,7 @@
 	<script name="SEActorManager" file="scripts/manager_actor_5E.lua"/>
 
 	<!-- Campaign Records -->
+	<includefile source="campaign/campaign_chars.xml" />
 	<!-- <includefile source="campaign/template_campaign.xml" /> -->
 	<includefile source="campaign/template_char.xml" />
 	<includefile source="campaign/template_se.xml" />
