@@ -12,17 +12,17 @@
 				AC.update(bReadOnly);
 				initialSpellSlots.update(bReadOnly);
 				profIncrease.update(bReadOnly);
-				profarmor.update(bReadOnly);
 				profsavingthrows.update(bReadOnly);
 				profskills.update(bReadOnly);
 				proftools.update(bReadOnly);
 				profweapons.update(bReadOnly);
-				multiprofarmor.update(bReadOnly);
-				multiprofskills.update(bReadOnly);
-				multiproftools.update(bReadOnly);
-				multiprofweapons.update(bReadOnly);
 				features.update(bReadOnly);
-				specializations.update(bReadOnly);
+				str.update(bReadOnly);
+				dex.update(bReadOnly);
+				con.update(bReadOnly);
+				int.update(bReadOnly);
+				cha.update(bReadOnly);
+				wis.update(bReadOnly);
 			end
 		</script>
 		<sheetdata>
@@ -45,6 +45,61 @@
 				<static text="Init Spell Slots" />
 			</label_column>
 			<string_columnh name="initialSpellSlots" source="initialSpellSlots" insertbefore="proficiencies_header"/>
+			<label_column name="stat_label_str" insertbefore="proficiencies_header">
+				<static text="STR"/>
+			</label_column>
+			<string_columnh name="str" source="stat.str" insertbefore="proficiencies_header"/>
+			<label_column name="stat_label_dex" insertbefore="proficiencies_header">
+				<static text="DEX"/>
+			</label_column>
+			<string_columnh name="dex" source="stat.dex" insertbefore="proficiencies_header"/>
+			<label_column name="stat_label_con" insertbefore="proficiencies_header">
+				<static text="CON"/>
+			</label_column>
+			<string_columnh name="con" source="stat.con" insertbefore="proficiencies_header"/>
+			<label_column name="stat_label_int" insertbefore="proficiencies_header">
+				<static text="INT"/>
+			</label_column>
+			<string_columnh name="int" source="stat.int" insertbefore="proficiencies_header"/>
+			<label_column name="stat_label_wis" insertbefore="proficiencies_header">
+				<static text="WIS"/>
+			</label_column>
+			<string_columnh name="wis" source="stat.wis" insertbefore="proficiencies_header"/>
+			<label_column name="stat_label_cha" insertbefore="proficiencies_header">
+				<static text="CHA"/>
+			</label_column>
+			<string_columnh name="cha" source="stat.cha" insertbefore="proficiencies_header"/>
+
+			<!-- remove armor proficiency -->
+			<label_column name="profarmor_label" merge="delete"/>
+			<hs name="profarmor_name" merge="delete"/>
+			<classprof_string name="profarmor" merge="delete"/>
+			<classprof_link name="profarmor_link" merge="delete"/>
+
+			<!-- remove multi-prof -->
+			<header_column name="multiclassproficiencies_header" merge="delete"/>
+			<label_column name="multiprofarmor_label" merge="delete"/>
+			<hs name="multiprofarmor_name" merge="delete"/>
+			<classprof_string name="multiprofarmor"  merge="delete"/>
+			<classprof_link name="multiprofarmor_link" merge="delete"/>
+			<label_column name="multiprofskills_label" merge="delete"/>
+			<hs name="multiprofskills_name" merge="delete"/>
+			<classprof_string name="multiprofskills" merge="delete"/>
+			<classprof_link name="multiprofskills_link" merge="delete"/>
+			<label_column name="multiproftools_label" merge="delete"/>
+			<hs name="multiproftools_name" merge="delete"/>
+			<classprof_string name="multiproftools" merge="delete"/>
+			<classprof_link name="multiproftools_link" merge="delete"/>
+			<label_column name="multiprofweapons_label" merge="delete"/>
+			<hs name="multiprofweapons_name" merge="delete"/>
+			<classprof_string name="multiprofweapons" merge="delete"/>
+			<classprof_link name="multiprofweapons_link" merge="delete"/>
+
+			<!-- remove specializations -->
+			<header_column name="specializations_header" merge="delete"/>
+			<button_iedit name="specializations_iedit" merge="delete"/>
+			<button_iadd name="specializations_iadd" merge="delete"/>
+			<list_column name="specializations" merge="delete"/>
 		</sheetdata>
 	</windowclass>
 </root>

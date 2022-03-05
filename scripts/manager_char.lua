@@ -60,9 +60,18 @@ function addClassRef(nodeChar, sClass, sRecord, bWizard)
 		 	table.insert(aDice, "d6");
 		-- end
 		DB.setValue(nodeClass, "hddie", "dice", aDice);
+		
+		--load stat values if new class
+		DB.setValue(nodeChar,"abilities.strength.score","number",tonumber(DB.getValue(nodeSource, "stat.str", "0")))
+		DB.setValue(nodeChar,"abilities.dexterity.score","number",tonumber(DB.getValue(nodeSource, "stat.dex", "0")))
+		DB.setValue(nodeChar,"abilities.constitution.score","number",tonumber(DB.getValue(nodeSource, "stat.con", "0")))
+		DB.setValue(nodeChar,"abilities.intelligence.score","number",tonumber(DB.getValue(nodeSource, "stat.int", "0")))
+		DB.setValue(nodeChar,"abilities.wisdom.score","number",tonumber(DB.getValue(nodeSource, "stat.wis", "0")))
+		DB.setValue(nodeChar,"abilities.charisma.score","number",tonumber(DB.getValue(nodeSource, "stat.cha", "0")))
 	end
 	DB.setValue(nodeClass, "level", "number", nLevel);
 	
+
 	-- Calculate total level
 	local nTotalLevel = 0;
 	for _,vClass in pairs(nodeList.getChildren()) do
