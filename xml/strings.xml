@@ -5,4 +5,5 @@
 	<string name="SE_modifier_prof">[PROF]</string>
 	<string name="SE_char_label_background">BACKGROUND</string>
 	<string name="SE_char_label_specialSkills">SPECIAL SKILLS</string>
+	<string name="SE_char_abilities_message_classadd_abort">***ERROR - Class addition aborted for '%s': Multi-classing is prohibited.***</string>
 </root>

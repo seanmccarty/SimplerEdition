@@ -18,6 +18,7 @@ function addClassRef(nodeChar, sClass, sRecord, bWizard)
 	if not nodeList then
 		return;
 	end
+
 	
 	-- Notify
 	CharManager.outputUserMessage("char_abilities_message_classadd", DB.getValue(nodeSource, "name", ""), DB.getValue(nodeChar, "name", ""));
@@ -39,7 +40,18 @@ function addClassRef(nodeChar, sClass, sRecord, bWizard)
 	if nodeClass then
 		bExistingClass = true;
 	else
-		nodeClass = nodeList.createChild();
+		if nodeList.getChildCount() == 0 then
+			nodeClass = nodeList.createChild();
+		else
+			function SystemMessage(sText)
+				local msg = {font = "systemfont"};
+				msg.text = sText;
+				Comm.addChatMessage(msg);
+			end
+			CharManager.outputUserMessage("SE_char_abilities_message_classadd_abort",DB.getValue(nodeChar, "name", ""));
+			return;
+		end
+		
 	end
 	
 	-- Calculate current spell slots before levelling up
