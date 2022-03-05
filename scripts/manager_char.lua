@@ -155,7 +155,13 @@ function addClassRef(nodeChar, sClass, sRecord, bWizard)
 	local totalSlots = newSpellSlot + newPactSlot + DB.getValue(nodeSource, "initialSpellSlots", 1) - 1
 	DB.setValue(nodeChar, "powermeta.spellslots1.max", "number", totalSlots);
 	DB.setValue(nodeChar, "powermeta.pactmagicslots1.max", "number", 0);
-	--TODO: show all spells while in combat mode
+	--if we have slots, set the spell slots for 2-5 to have a value so the power groups are visible in combat mode
+	if totalSlots > 0 then
+		DB.setValue(nodeChar, "powermeta.spellslots2.max", "number", 1);
+		DB.setValue(nodeChar, "powermeta.spellslots3.max", "number", 1);
+		DB.setValue(nodeChar, "powermeta.spellslots4.max", "number", 1);
+		DB.setValue(nodeChar, "powermeta.spellslots5.max", "number", 1);
+	end
 
 	--Add the new spells for the class
 	local nLevel = nTotalLevel;

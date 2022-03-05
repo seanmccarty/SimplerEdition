@@ -61,7 +61,8 @@ function rebuildListSlots(ctrlList, sPrefix)
 	local tWindows = ctrlList.getWindows();
 
 	local nodeChar = getDatabaseNode();
-	for i = 1, PowerManager.SPELL_LEVELS do
+	--edit to only show first level spell slots
+	for i = 1, 1 do
 		if DB.getValue(nodeChar, "powermeta." .. sPrefix .. i .. ".max", 0) > 0 then
 			--edit
 			local sLabel = "";
