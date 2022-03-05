@@ -155,8 +155,33 @@ function addClassRef(nodeChar, sClass, sRecord, bWizard)
 	local totalSlots = newSpellSlot + newPactSlot + DB.getValue(nodeSource, "initialSpellSlots", 1) - 1
 	DB.setValue(nodeChar, "powermeta.spellslots1.max", "number", totalSlots);
 	DB.setValue(nodeChar, "powermeta.pactmagicslots1.max", "number", 0);
-	
-	
+	--TODO: show all spells while in combat mode
+
+	--Add the new spells for the class
+	local nLevel = nTotalLevel;
+	local sClass = sClassName;
+	local aMappings = LibraryData.getMappings("spell");
+	for _,vMapping in ipairs(aMappings) do
+		for _,vSpell in pairs(DB.getChildrenGlobal(vMapping)) do
+			local sSpell = StringManager.trim(DB.getValue(vSpell, "name", "")):lower();
+			sSpell = StringManager.trim(sSpell);
+
+			local nSpellLevel = DB.getValue(vSpell, "level", 0);
+			local aSpellSource = StringManager.split(DB.getValue(vSpell, "source", ""), ",");
+
+			for _,vSource in pairs(aSpellSource) do
+				vSource = vSource:lower():gsub("%(optional%)", "")
+				vSource = vSource:lower():gsub("%(new%)", "")
+				vSource = StringManager.trim(vSource);
+				if nSpellLevel == nLevel or (nLevel == 1 and nSpellLevel == 0) then
+					if StringManager.trim(vSource:lower()) == sClass:lower() then
+						PowerManager.addPower("reference_spell", vSpell.getPath(), nodeChar, Interface.getString("power_label_groupspells"));
+					end
+				end
+			end
+
+		end
+	end	
 end
 
 function addClassProficiencyDB(nodeChar, sClass, sRecord)
