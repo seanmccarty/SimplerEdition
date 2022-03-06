@@ -21,7 +21,24 @@ function addNPC(sClass, nodeNPC, sName)
 	DB.setValue(nodeEntry, "init", "number", nDexMod);
 		DB.setValue(nodeEntry, "initresult", "number", math.random(10) + DB.getValue(nodeEntry, "init", 0));
 	-- end
+
+	transformScore(nodeEntry, "strength");
+	transformScore(nodeEntry, "dexterity");
+	transformScore(nodeEntry, "constitution");
+	transformScore(nodeEntry, "intelligence");
+	transformScore(nodeEntry, "wisdom");
+	transformScore(nodeEntry, "charisma");
     return nodeEntry;
+end
+
+---Converts score from 5E to SE
+---@param nodeEntry any nodeEntry from parent function
+---@param sAbility any full string name of ability to transform from 5E to SE
+function transformScore(nodeEntry, sAbility)
+	if DB.getValue(nodeEntry, "abilities." .. sAbility .. ".score", 0) ~= DB.getValue(nodeEntry, "abilities." .. sAbility .. ".bonus", 0) then
+		local origValue = DB.getValue(nodeEntry, "abilities." .. sAbility .. ".score", 0);
+		DB.setValue(nodeEntry, "abilities." .. sAbility .. ".score", "number",math.floor((origValue-10)/2));
+	end
 end
 
 function rollRandomInit(nMod, bADV, bDIS)
