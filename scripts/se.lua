@@ -104,15 +104,18 @@ end
 
 function getSaveRoll(rActor, sSave)
 	local rRoll = {};
-	rRoll.sType = "check";
+	rRoll.sType = "save";
 	rRoll.aDice = { "d20" };
-	local nMod, bADV, bDIS, sAddText = ActorManager5E.getCheck(rActor, sSave);
+	local nMod, bADV, bDIS, sAddText = ActorManager5E.getSave(rActor, sSave);
 	local sNodeType, nodeActor = ActorManager.getTypeAndNode(rActor);
-	local nQBValue = DB.getValue(nodeActor, "profbonus", 0);
 	
-	rRoll.nMod = nMod + nQBValue;
-	
-	rRoll.sDesc = "[CHECK] ".. Interface.getString("SE_modifier_prof") .. " " .. StringManager.capitalize(sSave);
+	rRoll.nMod = nMod + DB.getValue(nodeActor, "profbonus", 0);
+	if sNodeType == "pc" then
+		rRoll.sDesc = "[SAVE] ".. Interface.getString("SE_modifier_prof") .. " " .. StringManager.capitalize(sSave);
+	else
+		rRoll.sDesc = "[SAVE] " .. StringManager.capitalize(sSave);
+	end
+
 	if sAddText and sAddText ~= "" then
 		rRoll.sDesc = rRoll.sDesc .. " " .. sAddText;
 	end
