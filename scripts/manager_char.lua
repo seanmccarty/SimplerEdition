@@ -152,16 +152,29 @@ function addClassRef(nodeChar, sClass, sRecord, bWizard)
 	--SE set spell slots
 	local newSpellSlot = CharManager.calcSpellcastingLevel(nodeChar);
 	local newPactSlot = CharManager.calcPactMagicLevel(nodeChar);
-	local totalSlots = newSpellSlot + newPactSlot + DB.getValue(nodeSource, "initialSpellSlots", 1) - 1
-	DB.setValue(nodeChar, "powermeta.spellslots1.max", "number", totalSlots);
-	DB.setValue(nodeChar, "powermeta.pactmagicslots1.max", "number", 0);
-	--if we have slots, set the spell slots for 2-5 to have a value so the power groups are visible in combat mode
-	if totalSlots > 0 then
-		DB.setValue(nodeChar, "powermeta.spellslots2.max", "number", 1);
-		DB.setValue(nodeChar, "powermeta.spellslots3.max", "number", 1);
-		DB.setValue(nodeChar, "powermeta.spellslots4.max", "number", 1);
-		DB.setValue(nodeChar, "powermeta.spellslots5.max", "number", 1);
+	local totalSlots = newSpellSlot + newPactSlot + DB.getValue(nodeSource, "initialSpellSlots", 1) - 1;
+	if newPactSlot>0 then
+		DB.setValue(nodeChar, "powermeta.pactmagicslots1.max", "number", totalSlots);
+		--if we have slots, set the spell slots for 2-5 to have a value so the power groups are visible in combat mode
+		if totalSlots > 0 then
+			DB.setValue(nodeChar, "powermeta.pactmagicslots2.max", "number", 1);
+			DB.setValue(nodeChar, "powermeta.pactmagicslots3.max", "number", 1);
+			DB.setValue(nodeChar, "powermeta.pactmagicslots4.max", "number", 1);
+			DB.setValue(nodeChar, "powermeta.pactmagicslots5.max", "number", 1);
+		end
+	else
+		DB.setValue(nodeChar, "powermeta.spellslots1.max", "number", totalSlots);
+		--if we have slots, set the spell slots for 2-5 to have a value so the power groups are visible in combat mode
+		if totalSlots > 0 then
+			DB.setValue(nodeChar, "powermeta.spellslots2.max", "number", 1);
+			DB.setValue(nodeChar, "powermeta.spellslots3.max", "number", 1);
+			DB.setValue(nodeChar, "powermeta.spellslots4.max", "number", 1);
+			DB.setValue(nodeChar, "powermeta.spellslots5.max", "number", 1);
+		end
 	end
+	
+	
+
 
 	--Add the new spells for the class
 	local nLevel = nTotalLevel;
