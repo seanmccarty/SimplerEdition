@@ -1,5 +1,5 @@
 function onInit()
-	OptionsManager.setOption("HRST", "off")
+	OptionsManager.deleteOption("HRST");
 	ActionsManager.registerResultHandler("check", onCheckRoll);
 	ActionDamage.applyCriticalToModRoll = applyCriticalToModRoll;
 	ActionInit.getRoll = getInitRoll;
