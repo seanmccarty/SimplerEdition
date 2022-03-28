@@ -124,27 +124,27 @@ function addClassRef(nodeChar, sClass, sRecord, bWizard)
 	-- Determine whether a specialization is added this level
 	if not bWizard then
 		local nodeSpecializationFeature = nil;
-		local aSpecializationOptions = {};
+		local tClassSpecOptions = {};
 		for _,v in pairs(DB.getChildren(nodeSource, "features")) do
 			if (DB.getValue(v, "level", 0) == nLevel) and (DB.getValue(v, "specializationchoice", 0) == 1) then
 				nodeSpecializationFeature = v;
-				aSpecializationOptions = CharManager.getClassSpecializationOptions(nodeSource);
+				tClassSpecOptions = CharManager.getClassSpecializationOptions(nodeSource);
 				break;
 			end
 		end
 		
 		-- Add features, with customization based on whether specialization is added this level
 		local rClassAdd = { nodeChar = nodeChar, nodeSource = nodeSource, nLevel = nLevel, nodeClass = nodeClass, nCasterLevel = nCasterLevel, nPactMagicLevel = nPactMagicLevel };
-		if #aSpecializationOptions == 0 then
+		if #tClassSpecOptions == 0 then
 			CharManager.addClassFeatureHelper(nil, rClassAdd);
-		elseif #aSpecializationOptions == 1 then
-			CharManager.addClassFeatureHelper( { aSpecializationOptions[1].text }, rClassAdd);
+		elseif #tClassSpecOptions == 1 then
+			CharManager.addClassFeatureHelper( { tClassSpecOptions[1].text }, rClassAdd);
 		else
 			-- Display dialog to choose specialization
 			local wSelect = Interface.openWindow("select_dialog", "");
 			local sTitle = Interface.getString("char_build_title_selectspecialization");
 			local sMessage = string.format(Interface.getString("char_build_message_selectspecialization"), DB.getValue(nodeSpecializationFeature, "name", ""), 1);
-			wSelect.requestSelection (sTitle, sMessage, aSpecializationOptions, CharManager.addClassFeatureHelper, rClassAdd);
+			wSelect.requestSelection (sTitle, sMessage, tClassSpecOptions, CharManager.addClassFeatureHelper, rClassAdd);
 		end
 	else
 		return nodeClass;

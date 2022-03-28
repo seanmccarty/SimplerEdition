@@ -12,6 +12,9 @@ function onInit()
 
 	--OptionsManager.registerCallback("HRIS", onHRISOptionChanged);
 	--onHRISOptionChanged();
+
+	-- local nodeChar = getDatabaseNode();
+	-- CharEncumbranceManager5E.updateEncumbranceLimit(nodeChar);
 end
 
 function onClose()

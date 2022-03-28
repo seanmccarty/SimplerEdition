@@ -1011,11 +1011,10 @@
 				</anchored>
 				<static textres="char_label_initdetail" />
 			</label>
-			<simplenumber name="initdexbonus" source="abilities.dexterity.bonus">
+			<number_static name="initdexbonus" source="abilities.dexterity.bonus">
 				<anchored to="label_initdetail" position="righthigh" offset="5,0" width="45" height="20" />
-				<frame name="fieldlight" offset="7,5,7,5" />
 				<hideonvalue>0</hideonvalue>
-			</simplenumber>
+			</number_static>
 			<label_fieldtop name="label_initdexbonus">
 				<anchored to="initdexbonus" />
 				<static textres="dex" />
@@ -1082,12 +1081,10 @@
 				</anchored>
 				<static textres="char_label_armordetail" />
 			</label>
-			<simplenumberc name="acbase">
+			<numberc_static name="acbase">
 				<anchored to="label_armordetail" position="righthigh" offset="5,0" width="45" height="20" />
-				<frame name="fieldlight" offset="7,5,7,5" />
 				<default>10</default>
-				<readonly />
-			</simplenumberc>
+			</numberc_static>
 			<label_fieldtop name="label_acbase">
 				<anchored to="acbase" />
 				<static textres="base" />
