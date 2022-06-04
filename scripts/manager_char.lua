@@ -218,12 +218,12 @@ function addClassProficiencyDB(nodeChar, sClass, sRecord)
 	
 	-- Armor, Weapon or Tool Proficiencies
 	if StringManager.contains({"armor", "weapons", "tools"}, sType) then
-		local sText = DB.getText(nodeSource, "text");
+		local sText = DB.getText(nodeSource, "text","");
 		CharManager.addProficiencyDB(nodeChar, sType, sText);
 		
 	-- Saving Throw Proficiencies
 	elseif sType == "savingthrows" then
-		local sText = DB.getText(nodeSource, "text");
+		local sText = DB.getText(nodeSource, "text", "");
 		for sProf in string.gmatch(sText, "(%a[%a%s]+)%,?") do
 			local sProfLower = StringManager.trim(sProf:lower());
 			if StringManager.contains(DataCommon.abilities, sProfLower) then
@@ -235,7 +235,7 @@ function addClassProficiencyDB(nodeChar, sClass, sRecord)
 	-- Skill Proficiencies
 	elseif sType == "skills" then
 		-- Parse the skill choice text
-		local sText = DB.getText(nodeSource, "text");
+		local sText = DB.getText(nodeSource, "text","");
 		
 		local aSkills = {};
 		local sPicks;
