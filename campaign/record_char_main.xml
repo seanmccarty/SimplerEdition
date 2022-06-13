@@ -57,27 +57,29 @@
 				<icons>char_race</icons>
 				<static textres="char_label_race" />
 			</label_charframetop>
-			<linkfield name="racelink">
-				<anchored to="racetitle" position="belowright" offset="-10,5" width="20" height="20" />
+			<genericcontrol name="racerightanchor">
+				<anchored to="racetitle" position="belowright" offset="-5,5" width="0" height="20" />
+				<disabled />
+			</genericcontrol>
+			<linkfield_statich name="subracelink">
+				<anchored to="racerightanchor" width="20" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="0" />
+				</anchored>
 				<description field="race" />
 				<closetoggle />
-				<invisible />
-				<script>
-					function onInit()
-						onValueChanged();
-					end
-					function onValueChanged()
-						if isEmpty() then
-							setVisible(false);
-						else
-							setVisible(true);
-						end
-					end
-				</script>
-			</linkfield>
+			</linkfield_statich>
+			<linkfield_statich name="racelink">
+				<anchored to="racerightanchor" width="20" height="20">
+					<top />
+					<right anchor="left" relation="relative" offset="0" />
+				</anchored>
+				<description field="race" />
+				<closetoggle />
+			</linkfield_statich>
 			<stringu name="race">
 				<anchored to="racetitle" position="belowleft" offset="-5,5" height="20">
-					<right parent="racelink" anchor="left" offset="-5" />
+					<right parent="racerightanchor" anchor="left" offset="-5" />
 				</anchored>
 			</stringu>
 
@@ -713,7 +715,6 @@
 			<dynamic />
 		</sizelimits>
 		<nodelete />
-		<playercontrol />
 		<script>
 			function onDrop(x, y, draginfo)
 				if draginfo.isType("shortcut") then
@@ -922,20 +923,14 @@
 				</anchored>
 				<disabled />
 			</genericcontrol>
-			<linkfield name="shortcut">
+			<linkfield_statich name="shortcut">
 				<anchored to="rightanchor" width="20" height="20">
 					<top />
 					<right anchor="left" />
 				</anchored>
 				<script>
-					function onInit()
-						onValueChanged();
-					end
-					function onValueChanged()
-						setVisible(not isEmpty());
-					end
 				</script>
-			</linkfield>
+			</linkfield_statich>
 			<button_idelete name="idelete">
 				<anchored to="rightanchor">
 					<top />
@@ -983,6 +978,24 @@
 				</anchored>
 				<multilinespacing>20</multilinespacing>
 			</string_textlistitem>
+			<!-- <label name="label_specialization">
+				<anchored to="name" position="belowleft" offset="0,5" height="20" />
+				<static textres="char_label_class_specialization" />
+			</label>
+			<linkfield_statich name="specializationlink">
+				<anchored width="20" height="20">
+					<top parent="label_specialization" />
+					<right parent="shortcut" anchor="left" />
+				</anchored>
+				<description field="specialization" />
+				<closetoggle />
+			</linkfield_statich>
+			<simplestring name="specialization">
+				<anchored to="label_specialization" position="righthigh" offset="5,0" height="20">
+					<right parent="specializationlink" anchor="left" offset="-5"/>
+				</anchored>
+				<readonly />
+			</simplestring> -->
 		</sheetdata>
 	</windowclass>	
 
@@ -992,7 +1005,6 @@
 			<size width="500" height="220" />
 		</placement>
 		<nodelete />
-		<playercontrol />
 		<sheetdata>
 			<windowtitlebar_char name="title">
 				<prefix>char_combatcalc_title</prefix>
@@ -1184,7 +1196,6 @@
 			<size width="400" height="120" />
 		</placement>
 		<nodelete />
-		<playercontrol />
 		<sheetdata>
 			<windowtitlebar_char name="title">
 				<prefix>char_healthcalc_title</prefix>

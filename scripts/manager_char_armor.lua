@@ -12,12 +12,10 @@ function calcItemArmorClass(nodeChar)
 	
 	for _,vNode in pairs(DB.getChildren(nodeChar, "inventorylist")) do
 		if DB.getValue(vNode, "carried", 0) == 2 then
-			local bIsArmor, _, sSubtypeLower = ItemManager2.isArmor(vNode);
-			if bIsArmor then
+			if ItemManager.isArmor(vNode) then
 				local bID = LibraryData.getIDState("item", vNode, true);
 				
-				local bIsShield = (sSubtypeLower == "shield");
-				if bIsShield then
+				if ItemManager.isShield(vNode) then
 					if bID then
 						nMainShieldTotal = nMainShieldTotal + DB.getValue(vNode, "ac", 0) + DB.getValue(vNode, "bonus", 0);
 					else

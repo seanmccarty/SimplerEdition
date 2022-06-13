@@ -4,7 +4,7 @@
 		<margins control="0,0,0,7" />
 		<script>
 			function onInit()
-				update();
+				self.update();
 			end
 			function update()
 				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
