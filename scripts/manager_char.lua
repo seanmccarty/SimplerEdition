@@ -1,55 +1,14 @@
 function onInit()
-	CharManager.addSkill = addSkill;
+	CharManager.helperAddSkill = helperAddSkill;
 	CharManager.resetHealth = resetHealth;
-	CharManager.onSkillSelect = onSkillSelect;
 end
 
-function onSkillSelect(aSelection, rSkillAdd)
-	-- For each selected skill, add it to the character
-	for _,sSkill in ipairs(aSelection) do
-		addSimpleSkillDB(rSkillAdd.nodeChar, sSkill, rSkillAdd.nProf or 1);
-	end
-end
-
-function addSkills(nodeChar, aSkills)
-	-- Check for empty or missing skill list, then use full list
-	if not aSkills then 
-		aSkills = {}; 
-	end
-	if #aSkills == 0 then
-		for k,_ in pairs(DataCommon.skilldata) do
-			table.insert(aSkills, k);
-		end
-		table.sort(aSkills);
-	end
-		
-	-- Add links (if we can find them)
-	for k,v in ipairs(aSkills) do
-		local rSkillData = DataCommon.skilldata[v];
-		if rSkillData then
-			local rSkill = { text = v, linkclass = "", linkrecord = "" };
-			local nodeSkill = RecordManager.findRecordByStringI("skill", "name", v);
-			if nodeSkill then
-				rSkill.linkclass = "reference_skill";
-				rSkill.linkrecord = DB.getPath(nodeSkill);
-			end
-			aSkills[k] = rSkill;
-		end
-	end
-	
-	for k,v in ipairs(aSkills) do
-		SECharManager.addSimpleSkillDB(nodeChar,v.text, v.linkclass, v.linkrecord)
-	end
-end
-
-function addSimpleSkill(nodeChar, sSkill)
-	local rSkillData = DataCommon.skilldata[sSkill];
-	if rSkillData then
-		return addSimpleSkillDB(nodeChar, sSkill, "reference_skill", "reference.skilldata." .. rSkillData.lookup .. "@*" );
-	end
-end
-
-function addSimpleSkillDB(nodeChar, sSkill, linkclass, linkrecord)
+---SE uses a different skill list format along with code to add the link
+---@param nodeChar any the character to be modified
+---@param sSkill string the skill to be added
+---@param nProficient any this parameter is ignored
+---@return any nodeSkill the node of the skill added
+function helperAddSkill(nodeChar, sSkill, nProficient)
 	-- Get the list we are going to add to
 	local nodeList = nodeChar.createChild("simpleskilllist");
 	if not nodeList then
@@ -69,7 +28,12 @@ function addSimpleSkillDB(nodeChar, sSkill, linkclass, linkrecord)
 	if not nodeSkill then
 		nodeSkill = nodeList.createChild();
 		DB.setValue(nodeSkill, "name", "string", sSkill);
-		if linkrecord then
+
+		--check if this is defined in the campaign or module so this will resolve and show the descriptive text
+		local nodeRefSkill = RecordManager.findRecordByStringI("skill", "name", sSkill);
+		if nodeRefSkill then
+			local linkclass = "reference_skill";
+			local linkrecord = DB.getPath(nodeRefSkill);
 			DB.setValue(nodeSkill, "shortcut", "windowreference",linkclass,  linkrecord);
 		end
 	end
@@ -79,20 +43,9 @@ function addSimpleSkillDB(nodeChar, sSkill, linkclass, linkrecord)
 	return nodeSkill;
 end
 
-function addSkill(nodeChar, sClass, sRecord)
-	local nodeSource = DB.findNode(sRecord);
-	if not nodeSource then
-		return;
-	end
-	
-	-- Add skill entry
-	local nodeSkill = SECharManager.addSimpleSkill(nodeChar, DB.getValue(nodeSource, "name", ""));
-	if not nodeSkill then
-		local nodeSkill = SECharManager.addSimpleSkillDB(nodeChar, DB.getValue(nodeSource, "name", ""));
-		DB.setValue(nodeSkill, "text", "formattedtext", DB.getValue(nodeSource, "text", ""));
-	end
-end
-
+---Makes a few modifications as marked since SE handles rests a little differently for hit dice
+---@param nodeChar any the character to be rested
+---@param bLong boolean if this is a long rest
 function resetHealth(nodeChar, bLong)
 	local bResetWounds = false;
 	local bResetTemp = false;

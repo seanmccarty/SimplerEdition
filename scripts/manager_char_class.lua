@@ -140,7 +140,9 @@ function addClassProficiency(nodeChar, sClass, sRecord, bWizard)
 				local sText = DB.getText(rAdd.nodeSource, "text","");
 				local aSkills = CharManager.parseSkillsFromString(sText);
 				if aSkills then 
-					SECharManager.addSkills(rAdd.nodeChar, aSkills);
+					for _,sSkill in ipairs(aSkills) do
+						CharManager.helperAddSkill(nodeChar, sSkill);
+					end
 					return;
 				else
 					CharManager.outputUserMessage("char_error_addskill");
