@@ -23,7 +23,6 @@
 			<dynamic />
 		</sizelimits>
 		<softclose />
-		<nodelete />
 		<script>
 			function updateShowOrder()
 				local bShowInit = not OptionsManager.isOption("CTSI", "off");

@@ -208,16 +208,6 @@ function onEntrySectionToggle()
 end
 
 function onDrop(x, y, draginfo)
-	if draginfo.isType("shortcut") then
-		return CampaignDataManager.handleDrop("combattracker", draginfo);
-	end
-	
-	-- Capture any drops meant for specific CT entries
-	local win = getWindowAt(x,y);
-	if win then
-		local nodeWin = win.getDatabaseNode();
-		if nodeWin then
-			return CombatManager.onDrop("ct", nodeWin.getPath(), draginfo);
-		end
-	end
+	local sCTNode = UtilityManager.getWindowDatabasePath(getWindowAt(x,y));
+	return CombatDropManager.handleAnyDrop(draginfo, sCTNode);
 end
