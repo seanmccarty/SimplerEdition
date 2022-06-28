@@ -1,12 +1,23 @@
 function onInit()
-	oAddNPC = CombatManager.getCustomAddNPC();
-	CombatManager.setCustomAddNPC(addNPC);
+	CombatRecordManager.setRecordTypePostAddCallback("npc",addNPC);
+	CombatRecordManager.handleCombatAddInitDnD = handleCombatAddInitDnD;
 	CombatManager2.rollRandomInit = rollRandomInit;
 end
 
-function addNPC(sClass, nodeNPC, sName)
-	nodeEntry = oAddNPC(sClass, nodeNPC, sName);
+function addNPC(tCustom)
 	
+	if not tCustom.nodeRecord or not tCustom.nodeCT then
+		return;
+	end
+
+	transformScore(tCustom.nodeCT, "strength");
+	transformScore(tCustom.nodeCT, "dexterity");
+	transformScore(tCustom.nodeCT, "constitution");
+	transformScore(tCustom.nodeCT, "intelligence");
+	transformScore(tCustom.nodeCT, "wisdom");
+	transformScore(tCustom.nodeCT, "charisma");
+
+	CombatManager2.onNPCPostAdd(tCustom);
 	---TODO: account for group addition of NPC
 	-- local sOptINIT = OptionsManager.getOption("INIT");
 	-- if sOptINIT == "group" then
@@ -17,18 +28,12 @@ function addNPC(sClass, nodeNPC, sName)
 	-- 		DB.setValue(nodeEntry, "initresult", "number", math.random(10) + DB.getValue(nodeEntry, "init", 0));
 	-- 	end
 	-- elseif sOptINIT == "on" then
-	local nDexMod = DB.getValue(nodeNPC, "abilities.dexterity.score", 0);
-	DB.setValue(nodeEntry, "init", "number", nDexMod);
-		DB.setValue(nodeEntry, "initresult", "number", math.random(10) + DB.getValue(nodeEntry, "init", 0));
+	local nDexMod = DB.getValue(tCustom.nodeCT, "abilities.dexterity.score", 0);
+	DB.setValue(tCustom.nodeCT, "init", "number", nDexMod);
+		--DB.setValue(tCustom.nodeCT, "initresult", "number", math.random(10) + DB.getValue(tCustom.nodeCT, "init", 0));
 	-- end
-
-	transformScore(nodeEntry, "strength");
-	transformScore(nodeEntry, "dexterity");
-	transformScore(nodeEntry, "constitution");
-	transformScore(nodeEntry, "intelligence");
-	transformScore(nodeEntry, "wisdom");
-	transformScore(nodeEntry, "charisma");
-    return nodeEntry;
+	CombatRecordManager.handleCombatAddInitDnD(tCustom);
+	return true;
 end
 
 ---Converts score from 5E to SE
@@ -50,4 +55,23 @@ function rollRandomInit(nMod, bADV, bDIS)
 	end
 	nInitResult = nInitResult + nMod;
 	return nInitResult;
+end
+
+function handleCombatAddInitDnD(tCustom)
+	local sOptINIT = OptionsManager.getOption("INIT");
+	local nInit;
+	
+	if sOptINIT == "group" then
+		if tCustom.nodeCTLastMatch then
+			nInit = DB.getValue(tCustom.nodeCTLastMatch, "initresult", 0);
+		else
+			nInit = math.random(10) + DB.getValue(tCustom.nodeCT, "init", 0);
+		end
+	elseif sOptINIT == "on" then
+		nInit = math.random(10) + DB.getValue(tCustom.nodeCT, "init", 0);
+	else
+		return;
+	end
+	Debug.chat(DB.getValue(tCustom.nodeCT, "init", 0),nInit);
+	DB.setValue(tCustom.nodeCT, "initresult", "number", nInit);
 end
