@@ -72,6 +72,5 @@ function handleCombatAddInitDnD(tCustom)
 	else
 		return;
 	end
-	Debug.chat(DB.getValue(tCustom.nodeCT, "init", 0),nInit);
 	DB.setValue(tCustom.nodeCT, "initresult", "number", nInit);
 end
