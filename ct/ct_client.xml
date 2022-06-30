@@ -140,7 +140,6 @@
 
 			<string_clientct_name name="name" />
 			<string_clientct_name name="nonid_name">
-				<empty textres="library_recordtype_empty_nonid_npc" />
 				<invisible />
 			</string_clientct_name>
 
