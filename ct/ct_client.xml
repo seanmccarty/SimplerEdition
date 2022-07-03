@@ -6,13 +6,6 @@
 -->
 
 <root>
-	<template name="anchor_ct_label_right">
-		<genericcontrol name="rightanchor">
-			<anchored to="contentanchor" position="insidetopright" offset="58,0" width="0" height="0" />
-			<disabled />
-		</genericcontrol>
-	</template>
-
 	<windowclass name="combattracker_client">
 		<frame>ctbox</frame>
 		<placement>

@@ -41,7 +41,7 @@
 	</template>
 	<template name="anchor_ct_label_right">
 		<genericcontrol name="rightanchor">
-			<anchored to="contentanchor" position="insidetopright" offset="43,3" width="0" height="0" />
+			<anchored to="contentanchor" position="insidetopright" offset="58,5" width="0" height="0" />
 			<disabled />
 		</genericcontrol>
 	</template>
