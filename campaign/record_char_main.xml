@@ -714,7 +714,6 @@
 			<minimum width="470" height="200" />
 			<dynamic />
 		</sizelimits>
-		<nodelete />
 		<script>
 			function onDrop(x, y, draginfo)
 				if draginfo.isType("shortcut") then
@@ -1004,7 +1003,6 @@
 		<placement>
 			<size width="500" height="220" />
 		</placement>
-		<nodelete />
 		<sheetdata>
 			<windowtitlebar_char name="title">
 				<prefix>char_combatcalc_title</prefix>
@@ -1195,7 +1193,6 @@
 		<placement>
 			<size width="400" height="120" />
 		</placement>
-		<nodelete />
 		<sheetdata>
 			<windowtitlebar_char name="title">
 				<prefix>char_healthcalc_title</prefix>
