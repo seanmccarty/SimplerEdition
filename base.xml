@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
 <root version="1.1" release="1.0">
-	<announcement text="Simpler Edition v1.1-rc.1 by mccartysr, 2022" font="emotefont" icon="Logo_Mccartysr"/>>
+	<announcement text="Simpler Edition v1.1 by mccartysr, 2022" font="emotefont" icon="Logo_Mccartysr"/>>
 	<!-- Attributes -->
 	<description>
 		<displayname>Simpler Edition</displayname>
