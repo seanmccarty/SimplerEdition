@@ -23,7 +23,7 @@
 			<anchor_title_ctbox name="contentanchor" />
 
 			<anchor_ctbox_host_header />
-			<frame_ctbox_host_header_visibility />
+			<frame_ctbox_host_header_visibility name="header_vis" />
 			<buttoncontrol name="button_global_visibility">
 				<anchored to="header_vis" position="insidetopleft" offset="-5,2" width="22" height="22" />
 				<state icon="visibilityoff" tooltipres="ct_tooltip_shownpcallon" />
@@ -34,7 +34,7 @@
 					end
 				</script>
 			</buttoncontrol>
-			<frame_ctbox_host_header_labels />
+			<frame_ctbox_host_header_labels name="header_labels" />
 			<label_ct name="label_name">
 				<anchored to="header_labels" position="insidetopleft" offset="5,3">
 					<right offset="-175" />
@@ -65,7 +65,7 @@
 				<tooltip textres="ct_tooltip_wounds" />
 				<center />
 			</label_ct>
-			<frame_ctbox_host_header_toggles />
+			<frame_ctbox_host_header_toggles name="header_toggles" />
 			<buttoncontrol name="button_global_targeting">
 				<anchored to="header_toggles" position="insidetopleft" offset="7,-3" width="35" height="32" />
 				<state icon="button_section_targeting" />

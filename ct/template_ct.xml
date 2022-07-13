@@ -87,7 +87,7 @@
 			<anchored to="headeranchor" height="26">
 				<top />
 				<left offset="40" />
-				<right offset="-205" />
+				<right offset="-200" />
 			</anchored>
 		</metalplate>
 	</template>
