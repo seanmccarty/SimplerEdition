@@ -1,5 +1,6 @@
 function onInit()
 	CombatRecordManager.setRecordTypePostAddCallback("npc",addNPC);
+	CombatRecordManager.setRecordTypePostAddCallback("vehicle",addVehicle);
 	CombatRecordManager.handleCombatAddInitDnD = handleCombatAddInitDnD;
 	CombatManager2.rollRandomInit = rollRandomInit;
 end
@@ -34,6 +35,25 @@ function addNPC(tCustom)
 	-- end
 	CombatRecordManager.handleCombatAddInitDnD(tCustom);
 	return true;
+end
+
+function addVehicle(tCustom)
+	if not tCustom.nodeRecord or not tCustom.nodeCT then
+		return;
+	end
+
+	transformScore(tCustom.nodeCT, "strength");
+	transformScore(tCustom.nodeCT, "dexterity");
+	transformScore(tCustom.nodeCT, "constitution");
+	transformScore(tCustom.nodeCT, "intelligence");
+	transformScore(tCustom.nodeCT, "wisdom");
+	transformScore(tCustom.nodeCT, "charisma");
+
+	CombatManager2.onVehiclePostAdd(tCustom);
+
+	local nDexMod = DB.getValue(tCustom.nodeCT, "abilities.dexterity.score", 0);
+	DB.setValue(tCustom.nodeCT, "init", "number", nDexMod);
+	CombatRecordManager.handleCombatAddInitDnD(tCustom);
 end
 
 ---Converts score from 5E to SE
