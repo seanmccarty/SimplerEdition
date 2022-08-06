@@ -57,10 +57,10 @@
 	<!-- <includefile source="campaign/record_skill.xml" /> --> -->
 
 	<!-- Combat tracker -->
-	<includefile source="ct/template_ct.xml" />
 	<includefile source="ct/ct_host.xml" />
 	<includefile source="ct/ct_client.xml" />
-
+	<includefile source="ct/ct_host_entry.xml"/>
+	<includefile source="ct/ct_client_entry.xml"/>
 	<!-- Party Sheet -->
 	<includefile source="ps/ps_main.xml"/>
 </root>

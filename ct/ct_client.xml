@@ -6,155 +6,32 @@
 -->
 
 <root>
-	<windowclass name="combattracker_client">
-		<frame>ctbox</frame>
-		<placement>
-			<size width="500" height="500" />
-		</placement>
-		<sizelimits>
-			<minimum width="400" height="400" />
-			<dynamic />
-		</sizelimits>
-		<softclose />
+	<windowclass name="combattracker_client" merge="join">
 		<script>
-			function updateShowOrder()
-				local bShowInit = not OptionsManager.isOption("CTSI", "off");
-				label_init.setVisible(bShowInit);
-			end
-
 			function onInit()
-				OptionsManager.registerCallback("CTSI", updateShowOrder);
-				updateShowOrder();
+				super.onInit();
+				OptionsManager.unregisterCallback("SHPC", super.updateHealthDisplay);
+				OptionsManager.unregisterCallback("SHNPC", super.updateHealthDisplay);
 				OptionsManager.registerCallback("SHPC", updateHealthDisplay);
 				OptionsManager.registerCallback("SHNPC", updateHealthDisplay);
 				updateHealthDisplay();
+				label_temp.setVisible(false);
 			end
-			
-			function onClose()
-				OptionsManager.unregisterCallback("CTSI", updateShowOrder);
-				OptionsManager.unregisterCallback("SHPC", updateHealthDisplay);
-				OptionsManager.unregisterCallback("SHNPC", updateHealthDisplay);
-			end
-			
+
 			function updateHealthDisplay()
-				local sOptSHPC = OptionsManager.getOption("SHPC");
-				local sOptSHNPC = OptionsManager.getOption("SHNPC");
-				local bShowDetail = (sOptSHPC == "detailed") or (sOptSHNPC == "detailed");
-				
-				label_hp.setVisible(bShowDetail);
-			
-				label_wounds.setVisible(bShowDetail);
-
-				label_status.setVisible(not bShowDetail);
-
-				for _,w in pairs(list.getWindows()) do
-					w.updateHealthDisplay();
-				end
+				super.updateHealthDisplay();
+				label_temp.setVisible(false);
 			end
 		</script>
 		<sheetdata>
-			<windowtitlebar name="title">
-				<resource>ct_window_title</resource>
-			</windowtitlebar>
-			<anchor_title_ctbox name="contentanchor" />
-
-			<anchor_ctbox_client_header />
-			<anchor_ct_label_right />
-
-			<frame_ctbox_client_header name="frame_label"/>
+			<label_ct_right name="label_temp">
+				<invisible/>
+			</label_ct_right>
 			<label_ct_right name="label_status">
-				<anchored width="110" />
-				<static textres="ct_label_status" />
+				<anchored width="70" />
 			</label_ct_right>
-			<label_ct_right name="label_wounds">
-				<static textres="ct_label_wounds" />
-				<tooltip textres="ct_tooltip_wounds" />
-			</label_ct_right>
-			<label_ct_right name="label_hp">
-				<static textres="hp" />
-				<tooltip textres="hitpoints" />
-			</label_ct_right>
-			<label_ct_init name="label_init" />
-			<label_ct_name name="label_name" />
-
-			<list_ctbox_client />
-			<scrollbar_list />
-			
-			<button_ct_endturn name="turn_complete" />
-			
-			<label_ct_client_rounds />
-			<number_ct_client_rounds />
-
-			<resize_ctbox />
-			<helper_ct />
-			<close_ctbox />
-
-
-
 		</sheetdata>
 	</windowclass>
 
-	<windowclass name="client_ct_entry">
-		<margins control="0,0,0,2" />
-		<frame>ctentrybox</frame>
-		<script file="ct/scripts/clientct_entry.lua" />
-		<sheetdata>
-			<hidden_record_isidentified name="isidentified" />
-			<hlink_clientct name="link" />
-			<hs name="tokenrefid" />
-			<hs name="tokenrefnode" />
-			<hn name="tokenvis" />
 
-			<spacer_ctentry_active_top name="active_spacer_top" />
-
-			<button_clientct_active name="active" />
-			<token_clientct name="token" />
-
-			<anchor_ctentry_right name="rightanchor" />
-			<button_clientct_activateeffects name="activateeffects">
-				<anchored width="35" height="32">
-					<top offset="-8" />
-				</anchored>
-			</button_clientct_activateeffects>
-			<button_ctentry_friendfoe name="friendfoe" />
-
-
-			<base_clientct_health name="healthbase"  />
-			<string_clientct_status name="status" />
-			<number_clientct_wounds name="wounds"  />
-			<number_clientct_hp name="hptotal"  />
-
-			<number_clientct_init name="initresult">
-				<anchored to="rightanchor" width="30" height="20">
-					<top />
-					<right anchor="left" relation="relative" offset="-15" />
-				</anchored>
-			</number_clientct_init>
-
-			<string_clientct_name name="name" />
-			<string_clientct_name name="nonid_name">
-				<invisible />
-			</string_clientct_name>
-
-			<icon_clientctsection_effect name="effecticon">
-				<anchored width="35" height="32">
-					<top offset="0" />
-				</anchored>
-			</icon_clientctsection_effect>
-			<spacer_clientctsection_effect name="effectspacer">
-				<anchored height="0" />
-			</spacer_clientctsection_effect>
-			<list_clientct_effect name="effects" />
- 
-			<string_ctentry_targets name="target_summary" />
-			<string_ctentry_effects name="effect_summary" />
-			
-			<spacer_ctentry_middle name="spacer" />
-			<spacer_ctentry_active_bottom name="active_spacer_bottom" />
-
-
-
-
-		</sheetdata>
-	</windowclass>
 </root>
