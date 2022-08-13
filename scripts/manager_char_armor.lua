@@ -14,7 +14,6 @@ function calcItemArmorClass(nodeChar)
 		if DB.getValue(vNode, "carried", 0) == 2 then
 			if ItemManager.isArmor(vNode) then
 				local bID = LibraryData.getIDState("item", vNode, true);
-				
 				if ItemManager.isShield(vNode) then
 					if bID then
 						nMainShieldTotal = nMainShieldTotal + DB.getValue(vNode, "ac", 0) + DB.getValue(vNode, "bonus", 0);
