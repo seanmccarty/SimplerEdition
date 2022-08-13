@@ -14,6 +14,7 @@
 	<script name="SERecoveryManager" file="scripts/manager_action_recovery.lua"/>
 	 -->
 	<script name="SECombatManager" file="scripts/manager_combat2.lua"/>
+	<script name="SECombatRecordManager" file="scripts/manager_combat_record.lua"/>
 	<script name="SEActorManager" file="scripts/manager_actor_5E.lua"/>
 
 	<!-- Campaign Records -->
