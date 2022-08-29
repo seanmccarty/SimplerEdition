@@ -322,7 +322,7 @@
 			<number_charwounds name="wounds" source="hp.wounds">
 				<anchored to="healthtitle" width="40" height="30">
 					<top anchor="bottom" offset="15" />
-					<left anchor="center" offset="-60" />
+					<left anchor="center" offset="-90" />
 				</anchored>
 				<font>reference-b-large</font>
 				<description textres="char_tooltip_wounds" />
@@ -346,8 +346,8 @@
 				<anchored to="hp" offset="5,15" />
 				<static textres="char_label_hpmax" />
 			</label_charfieldtop>
-			<!-- <basicnumber name="temphp" source="hp.temporary">
-				<anchored to="hp" position="righthigh" offset="15,0" width="40" height="30" />
+			<basicnumber name="temphp" source="hp.temporary">
+				<anchored to="hp" position="righthigh" relation="relative" offset="15,0" width="40" height="30" />
 				<font>reference-b-large</font>
 				<color>0000AA</color>
 				<description textres="temphp" />
@@ -369,14 +369,14 @@
 			<label_charfieldtop name="temphp_label">
 				<anchored to="temphp" offset="0,15" />
 				<static textres="char_label_hptemp" />
-			</label_charfieldtop> -->
+			</label_charfieldtop>
 			<label name="hpgroup_label">
 				<anchored to="wounds" position="lefthigh" offset="15,5" />
 				<static textres="hp" />
 			</label>
 			
 			<windowlist name="hd">
-				<anchored to="hp" position="righthigh" relation="relative" offset="15,0" width="40" height="30" />
+				<anchored to="temphp" position="righthigh" relation="relative" offset="15,0" width="40" height="30" />
 				<frame name="fieldlight" offset="7,5,7,5" />
 				<columns width="30" fillwidth="true" />
 				<datasource>.classes</datasource>
