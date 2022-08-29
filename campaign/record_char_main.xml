@@ -909,6 +909,18 @@
 				action();
 				return true;
 			end
+			
+			function onDrop(x, y, draginfo)
+				if draginfo.isType("shortcut") then
+					local sClass, sRecord = draginfo.getShortcutData();
+					if sClass == "reference_classability" or sClass == "reference_class_specialization" then
+						local node = getDatabaseNode();
+						DB.setValue(node, "specialization", "string", DB.getValue(DB.getPath(sRecord, "name"), ""));
+						DB.setValue(node, "specializationlink", "windowreference", sClass, sRecord);
+					end
+				end
+			end
+
 		</script>
 		<sheetdata>
 			<genericcontrol name="rightanchor">
