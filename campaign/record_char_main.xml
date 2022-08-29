@@ -79,7 +79,7 @@
 			</linkfield_statich>
 			<stringu name="race">
 				<anchored to="racetitle" position="belowleft" offset="-5,5" height="20">
-					<right parent="racerightanchor" anchor="left" offset="-5" />
+					<right parent="racerightanchor" anchor="left" relation="relative" offset="-5" />
 				</anchored>
 			</stringu>
 
