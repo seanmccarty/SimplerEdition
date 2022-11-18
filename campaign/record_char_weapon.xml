@@ -105,11 +105,11 @@
 				<class>char_weapon_damage_entry</class>
 				<script>
 					function addEntry(bFocus)
-						local n = getWindowCount();
+						local bWasEmpty = isEmpty();
 						
 						local w = createWindow();
 						if w then
-							if n == 0 then
+							if bWasEmpty then
 								w.stat.setStringValue("base");
 							end
 						
