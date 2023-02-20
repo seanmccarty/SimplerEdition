@@ -93,7 +93,7 @@
 			</header_column>
 			<button_iedit name="list_iedit">
 				<anchored to="header_damage" position="insidetopright" offset="-5,0" />
-				<target>list</target>
+				<edittarget>list</edittarget>
 			</button_iedit>
 			<button_iadd name="list_iadd">
 				<anchored to="list_iedit" position="lefthigh" offset="5,0" />

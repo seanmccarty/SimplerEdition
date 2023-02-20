@@ -17,7 +17,7 @@ function getCharClassHDUsage(nodeChar)
 	local nHD = math.max(1,DB.getValue(nodeChar,"abilities.constitution.bonus",0));
 	local nHDUsed = 0;
 	
-	for _,nodeChild in pairs(DB.getChildren(nodeChar, "classes")) do
+	for _,nodeChild in ipairs(DB.getChildList(nodeChar, "classes")) do
 		nHDUsed = nHDUsed + DB.getValue(nodeChild, "hdused", 0);
 	end
 	

@@ -83,7 +83,7 @@ end
 function performRecoveryRoll(draginfo, rActor, nodeClass)
 	local rRoll = {};
 	rRoll.sType = "recovery";
-	rRoll.sClassNode = nodeClass.getPath();
+	rRoll.sClassNode = DB.getPath(nodeClass);
 	
 	rRoll.sDesc = "[RECOVERY]";
 	rRoll.aDice = {};

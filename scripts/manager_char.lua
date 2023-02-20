@@ -10,14 +10,14 @@ end
 ---@return any nodeSkill the node of the skill added
 function helperAddSkill(nodeChar, sSkill, nProficient)
 	-- Get the list we are going to add to
-	local nodeList = nodeChar.createChild("simpleskilllist");
+	local nodeList = DB.createChild(nodeChar, "simpleskilllist");
 	if not nodeList then
 		return nil;
 	end
 	
 	-- Make sure this item does not already exist
 	local nodeSkill = nil;
-	for _,vSkill in pairs(nodeList.getChildren()) do
+	for _,vSkill in ipairs(DB.getChildList(nodeList)) do
 		if DB.getValue(vSkill, "name", "") == sSkill then
 			nodeSkill = vSkill;
 			break;
@@ -26,7 +26,7 @@ function helperAddSkill(nodeChar, sSkill, nProficient)
 		
 	-- Add the item
 	if not nodeSkill then
-		nodeSkill = nodeList.createChild();
+		nodeSkill = DB.createChild(nodeList);
 		DB.setValue(nodeSkill, "name", "string", sSkill);
 
 		--check if this is defined in the campaign or module so this will resolve and show the descriptive text
@@ -91,7 +91,7 @@ function resetHealth(nodeChar, bLong)
 	
 	-- Reset all hit dice
 	if bResetHitDice then
-		for _,vClass in pairs(DB.getChildren(nodeChar, "classes")) do
+		for _,vClass in ipairs(DB.getChildList(nodeChar, "classes")) do
 			DB.setValue(vClass, "hdused", "number", 0);
 		end
 	end
@@ -107,7 +107,7 @@ function resetHealth(nodeChar, bLong)
 				nHDRecovery = math.max(math.floor(nHDTotal / 2), 1);
 			end
 			if nHDRecovery >= nHDUsed then
-				for _,vClass in pairs(DB.getChildren(nodeChar, "classes")) do
+				for _,vClass in ipairs(DB.getChildList(nodeChar, "classes")) do
 					DB.setValue(vClass, "hdused", "number", 0);
 				end
 			else
@@ -117,7 +117,7 @@ function resetHealth(nodeChar, bLong)
 					nClassMaxHDSides = 0;
 					nClassMaxHDUsed = 0;
 					
-					for _,vClass in pairs(DB.getChildren(nodeChar, "classes")) do
+					for _,vClass in ipairs(DB.getChildList(nodeChar, "classes")) do
 						local nClassHDUsed = DB.getValue(vClass, "hdused", 0);
 						if nClassHDUsed > 0 then
 							local aClassDice = DB.getValue(vClass, "hddie", {});

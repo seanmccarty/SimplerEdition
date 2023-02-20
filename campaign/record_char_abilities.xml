@@ -6,26 +6,6 @@
 -->
 
 <root>
-	<windowclass name="charsheet_abilities" merge="join">
-		<sheetdata>
-			<button_iedit name="actions_iedit">
-				<anchored position="insidebottomright" offset="10,10" />
-				<tooltip textres="char_abilities_tooltip_edit" />
-				<script>
-					function onValueChanged()
-						local bEditMode = (getValue() == 1);
-						
-						--window.contents.subwindow.feats.update();
-						window.contents.subwindow.features.update();
-						window.contents.subwindow.traits.update();
-						--window.contents.subwindow.proficiencies.update();
-						window.contents.subwindow.languages.update();
-					end
-				</script>
-			</button_iedit>
-		</sheetdata>
-	</windowclass>
-
 	<windowclass name="charsheet_abilities_contents" merge="join">
 		<script file="campaign/scripts/char_abilities.lua" />
 		<sheetdata>

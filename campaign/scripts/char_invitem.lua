@@ -4,9 +4,15 @@
 --
 
 function onInit()
+	if super and super.onInit then
+		super.onInit();
+	end
 end
 
 function onClose()
+	if super and super.onClose then
+		super.onClose();
+	end
 end
 
 function onAttuneRelatedAttributeUpdate(nodeAttribute)

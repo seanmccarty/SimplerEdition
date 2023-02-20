@@ -71,7 +71,7 @@ function getDamageClauses(nodeChar, nodeWeapon, sBaseAbility, nReroll)
 
 	-- Iterate over database nodes in order they are displayed
 	local rActor = ActorManager.resolveActor(nodeChar);
-	local aDamageNodes = UtilityManager.getSortedTable(DB.getChildren(nodeWeapon, "damagelist"));
+	local aDamageNodes = UtilityManager.getNodeSortedChildren(nodeWeapon, "damagelist");
 	for _,v in ipairs(aDamageNodes) do
 		-- Build basic damage clause information
 		local sDmgAbility = DB.getValue(v, "stat", "");

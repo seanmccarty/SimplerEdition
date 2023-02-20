@@ -641,7 +641,7 @@
 			end
 			
 			function action(draginfo)
-				local nodeChar = getDatabaseNode().getChild("...")
+				local nodeChar = DB.getChild(getDatabaseNode(), "...")
 				local rActor = ActorManager.resolveActor(nodeChar);
 
 				ActionRecovery.performRoll(draginfo, rActor, getDatabaseNode());
@@ -727,9 +727,9 @@
 			end
 		</script>
 		<sheetdata>
-			<windowtitlebar_char name="title">
+			<windowtitlebar_charsheethelper name="title">
 				<prefix>char_classes_title</prefix>
-			</windowtitlebar_char>
+			</windowtitlebar_charsheethelper>
 			<anchor_title_charsheethelper name="contentanchor" />
 
 			<!-- <label_charframetop name="leveltitle">
@@ -894,7 +894,7 @@
 		</sizelimits>
 		<script>
 			function action(draginfo)
-				local nodeChar = getDatabaseNode().getChild("...")
+				local nodeChar = DB.getChild(getDatabaseNode(), "...")
 				local rActor = ActorManager.resolveActor(nodeChar);
 
 				ActionRecovery.performRoll(draginfo, rActor, getDatabaseNode());
@@ -1016,9 +1016,9 @@
 			<size width="500" height="220" />
 		</placement>
 		<sheetdata>
-			<windowtitlebar_char name="title">
+			<windowtitlebar_charsheethelper name="title">
 				<prefix>char_combatcalc_title</prefix>
-			</windowtitlebar_char>
+			</windowtitlebar_charsheethelper>
 			<anchor_title_charsheethelper name="contentanchor" />
 
 			<anchor_column name="columnanchor">
@@ -1206,9 +1206,9 @@
 			<size width="400" height="120" />
 		</placement>
 		<sheetdata>
-			<windowtitlebar_char name="title">
+			<windowtitlebar_charsheethelper name="title">
 				<prefix>char_healthcalc_title</prefix>
-			</windowtitlebar_char>
+			</windowtitlebar_charsheethelper>
 			<anchor_title_charsheethelper name="contentanchor" />
 
 			<anchor_column name="columnanchor">
