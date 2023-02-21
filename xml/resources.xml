@@ -53,6 +53,7 @@
 	<includefile source="campaign/record_class.xml" />
 	<!-- <includefile source="campaign/record_feat.xml" /> -->
 	<includefile source="campaign/record_power.xml" />
+	<includefile source="campaign/record_power_item.xml" />
 	<!-- <includefile source="campaign/record_power_roll.xml" /> -->
 	<!-- <includefile source="campaign/record_race.xml" /> -->
 	<!-- <includefile source="campaign/record_skill.xml" /> --> -->

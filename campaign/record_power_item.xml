@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+<!-- Copy of ruleset xml due to FEB 2023 updates -->
+<root>
+	<template name="buttongroup_counter_power">
+		<genericcontrol>
+			<anchored width="10" height="20" />
+			<stateicons>
+				<on>button_checkon</on>
+				<off>button_checkoff</off>
+			</stateicons>
+			<script file="campaign/scripts/buttongroup_counter_power_5E.lua" />
+		</genericcontrol>
+	</template>
+	<windowclass name="power_item" merge="join">
+		<script>
+			function onInit()
+				super.onInit();
+				windowlist.onChildWindowAdded(self);
+			end
+		</script>
+		<sheetdata>
+			<hs name="group" />
+			<hn name="level" />
+		</sheetdata>
+	</windowclass>
+	<windowclass name="power_item_header">
+		<margins control="0,0,0,2" />
+		<sheetdata>
+			<anchor_poweritem_header_left name="leftanchor" />
+			<genericcontrol name="usespacer">
+				<anchored to="leftanchor" width="10" height="20">
+					<top />
+					<left anchor="right" relation="relative" />
+				</anchored>
+			</genericcontrol>
+			<genericcontrol name="blank">
+				<anchored to="leftanchor" width="20" height="20">
+					<top />
+					<left anchor="right" relation="relative" />
+				</anchored>
+				<invisible />
+			</genericcontrol>
+			<icon_usepower name="usepower">
+				<anchored to="leftanchor">
+					<top />
+					<left anchor="right" relation="relative" />
+				</anchored>
+				<invisible />
+			</icon_usepower>
+			<buttongroup_counter_power name="counter">
+				<anchored to="leftanchor">
+					<top />
+					<left anchor="right" relation="relative" />
+				</anchored>
+				<invisible />
+			</buttongroup_counter_power>
+			<button_checkbox name="preparedcheck" source="prepared">
+				<anchored to="leftanchor" width="20" height="20">
+					<top />
+					<left anchor="right" relation="relative" />
+				</anchored>
+				<invisible />
+			</button_checkbox>
+			<basicnumber name="prepared">
+				<anchored to="leftanchor" width="30" height="20">
+					<top />
+					<left anchor="right" relation="relative" />
+				</anchored>
+				<min>0</min>
+				<tooltip textres="power_tooltip_prepared" />
+				<invisible />
+			</basicnumber>
+			<cycler_power_useperiod name="usesperiod">
+				<anchored to="leftanchor">
+					<top />
+					<left anchor="right" relation="relative" offset="10" />
+				</anchored>
+				<invisible />
+			</cycler_power_useperiod>
+
+			<string_poweritem_header_name name="name">
+				<empty textres="library_recordtype_empty_spell" />
+			</string_poweritem_header_name>
+
+			<anchor_poweritem_header_right name="rightanchor" />
+			<string_poweritem_header name="group">
+				<tooltip textres="power_tooltip_group" />
+			</string_poweritem_header>
+			<list_poweraction_mini name="actionsmini" />
+			<string_poweritem_header name="shortdescription">
+				<tooltip textres="power_tooltip_summary" />
+			</string_poweritem_header>
+		</sheetdata>
+	</windowclass>
+</root>
