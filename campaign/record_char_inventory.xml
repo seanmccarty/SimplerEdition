@@ -46,8 +46,12 @@
 			</button_idelete>
 
 			<number_charinv name="weight" merge="delete"/>
-			<button_checkbox name="attune" merge="delete"/>
-			<simplestringc name="attune_na" merge="delete"/>
+			<button_checkbox name="attune">
+				<invisible/>
+			</button_checkbox>
+			<simplestringc name="attune_na">
+				<invisible/>
+			</simplestringc>
 		</sheetdata>
 	</windowclass>
 

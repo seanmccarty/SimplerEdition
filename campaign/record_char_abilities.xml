@@ -9,15 +9,18 @@
 	<windowclass name="charsheet_abilities_contents" merge="join">
 		<script file="campaign/scripts/char_abilities.lua" />
 		<sheetdata>
-			<label_charframetop name="featstitle">
-				<invisible/>
-			</label_charframetop>
+			<label_charframetop name="featstitle" merge="delete"/>
 			<list_abilities name="feats" merge="delete"/>
-			<button_iadd name="feats_iadd" merge="delete"/>
+			<button_iadd name="feats_iadd" merge="delete"/> 
+
+			<label_charframetop name="featurestitle" merge="join">
+				<anchored merge="delete"/>
+				<bounds>15,10,-10,20</bounds>
+			</label_charframetop>
 
 			<label_charframetop name="proficienciestitle" merge="delete"/>
 			<button_iadd name="proficiencies_iadd" merge="delete"/>
-			<list_abilities name="proficiencies" merge="delete"/>
+			<list_abilities name="proficiencies" merge="delete"/> 
 
 			<label_charframetop name="languagestitle">
 				<anchored to="traitstitle" height="20">
