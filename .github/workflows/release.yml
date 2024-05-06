@@ -11,4 +11,4 @@ jobs:
   run-release-workflow:
     uses: seanmccarty/fg-workflows/.github/workflows/reusable-release.yml@main
     with:
-      add_file_exclusions: '*.code-workspace'
+      add_file_exclusions: '*.code-workspace *.vscode*'
