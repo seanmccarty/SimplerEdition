@@ -1,45 +1,40 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
 <!-- 
-  Please see the license.html file included with this distribution for 
-  attribution and copyright information.
+  Remove encumbrance section
+  Remove attunement
+	Make onInit nil so that it does not trigger attunement
 -->
 
 <root>
-
-		
 	<windowclass name="charsheet_inventory_contents" merge="join">
-		<script file="campaign/scripts/char_inventory.lua" />
 		<sheetdata>
-			<label name="weight_label" merge="delete"/>
-			<genericcontrol name="attuned_header" merge="delete"/>
-			
+			<sub_content_top name="encumbrance" merge="delete"/>
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="charsheet_inventory_items" merge="join">
+		<script>
+			function onInit()
+
+			end
+		</script>
+		<sheetdata>
+			<label_list_content_number_right name="label_weight" merge="delete"/>
+			<icon_list_content_button_label_right name="label_attuned" merge="delete"/>
+
 			<button_details name="button_invmeta" merge="delete"/>
 			<genericcontrol name="attunecalcicon" merge="delete"/>
 			<string_charinv_attunecalc name="attunecalc" merge="delete"/>
-
-			<sub_content_top name="encumbrance" merge="delete"/>
 		</sheetdata>
 	</windowclass>
 
 	<windowclass name="char_invitem" merge="join">
 		<script file="campaign/scripts/char_invitem.lua"/>
 		<sheetdata>
-			<button_idelete name="idelete" merge="delete" />
-			<button_idelete name="idelete" insertbefore="carried">
-				<anchored>
-					<top offset="2" />
-					<right parent="rightanchor" anchor="left" offset="-5" />
-				</anchored>
-			</button_idelete>
-
-			<number_charinv name="weight" merge="delete"/>
-			<button_checkbox name="attune">
-				<invisible/>
-			</button_checkbox>
-			<simplestringc name="attune_na">
-				<invisible/>
-			</simplestringc>
+			<number_listitem_right name="weight" merge="delete"/>
+			<button_listitem_checkbox_right name="attune" merge="delete"/>
+			<stringc_listitem_right_noframe_static name="attune_na" merge="delete"/>
 		</sheetdata>
 	</windowclass>
 
