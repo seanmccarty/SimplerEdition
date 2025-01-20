@@ -7,7 +7,8 @@ function onInit()
 	ActionSave.performConcentrationRoll = performConcentrationRoll;
 	ActionSave.getRoll = getSaveRoll;
 	ActionsManager.registerResultHandler("skill", onSkillRoll);
-	CharEncumbranceManager.addStandardCalc();
+	-- Remove encumbrance calculation
+	CharEncumbranceManager.addCustomCalc(nil);
 end
 
 function onCheckRoll(rSource, rTarget, rRoll)
