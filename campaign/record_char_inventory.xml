@@ -18,19 +18,7 @@
 			<genericcontrol name="attunecalcicon" merge="delete"/>
 			<string_charinv_attunecalc name="attunecalc" merge="delete"/>
 
-			<label_charframetop name="encumbrancetitle" merge="delete"/>
-			<simplenumber name="encumbranceload"  merge="delete"/>
-			<label_fieldtop name="encumbranceload_label" merge="delete"/>
-
-			<genericcontrol name="encumbranceanchor" merge="delete"/>
-			<number_linked name="encumbrancebase" merge="delete"/>
-			<label_fieldtop name="encumbrancebase_label" merge="delete"/>
-			<number_linked name="encumbranceheavy" merge="delete"/>
-			<label_fieldtop name="encumbranceheavy_label" merge="delete"/>
-			<number_linked name="encumbrancemax"  merge="delete"/>
-			<label_fieldtop name="encumbrancemax_label" merge="delete"/>
-			<number_linked name="encumbrancedrag"  merge="delete"/>
-			<label_fieldtop name="encumbrancedrag_label" merge="delete"/>
+			<sub_content_top name="encumbrance" merge="delete"/>
 		</sheetdata>
 	</windowclass>
 
