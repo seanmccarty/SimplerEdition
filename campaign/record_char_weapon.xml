@@ -8,7 +8,7 @@
 <root>
 	<windowclass name="char_weapon" merge="join">
 		<sheetdata>
-			<button_weaponprof name="prof" merge="delete"/>
+			<button_prof name="prof" merge="delete"/>
 			<state_charweaponhand name="handling" merge="delete"/>
 		</sheetdata>
 	</windowclass>
